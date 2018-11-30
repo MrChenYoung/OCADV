@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8307528D2E55313F824EE730 /* libPods-OCADV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF861BBF599A30C2847E9A99 /* libPods-OCADV.a */; };
 		FF56DD5C21AFE3E70080DFBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF56DD5B21AFE3E70080DFBF /* AppDelegate.m */; };
 		FF56DD5F21AFE3E70080DFBF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF56DD5E21AFE3E70080DFBF /* ViewController.m */; };
 		FF56DD6221AFE3E70080DFBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF56DD6021AFE3E70080DFBF /* Main.storyboard */; };
 		FF56DD6421AFE3E80080DFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF56DD6321AFE3E80080DFBF /* Assets.xcassets */; };
 		FF56DD6721AFE3E80080DFBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF56DD6521AFE3E80080DFBF /* LaunchScreen.storyboard */; };
 		FF56DD6A21AFE3E80080DFBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF56DD6921AFE3E80080DFBF /* main.m */; };
+		FF7559D821AFE7DC00F6F08A /* ReactiveCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559D721AFE7DC00F6F08A /* ReactiveCocoaController.m */; };
+		FF7559DC21AFEC4200F6F08A /* UINavigationController+category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559DB21AFEC4200F6F08A /* UINavigationController+category.m */; };
+		FF7559E021AFEF7700F6F08A /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559DF21AFEF7700F6F08A /* MyButton.m */; };
+		FF7559E421AFEFE500F6F08A /* CreateSubViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559E321AFEFE500F6F08A /* CreateSubViewHandler.m */; };
+		FF7559E921AFF05300F6F08A /* RACView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559E821AFF05300F6F08A /* RACView.m */; };
+		FF7559EE21B0D70D00F6F08A /* AlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559ED21B0D70D00F6F08A /* AlertUtil.m */; };
+		FF7559F121B0DCF500F6F08A /* ControllerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559F021B0DCF500F6F08A /* ControllerUtil.m */; };
+		FF755A1C21B121E200F6F08A /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF755A1B21B121E200F6F08A /* UIView+Category.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FDD81362AC29D58B0343515 /* Pods-OCADV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCADV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OCADV/Pods-OCADV.debug.xcconfig"; sourceTree = "<group>"; };
+		BF861BBF599A30C2847E9A99 /* libPods-OCADV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OCADV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8510DCDD960DB7776E00042 /* Pods-OCADV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCADV.release.xcconfig"; path = "Pods/Target Support Files/Pods-OCADV/Pods-OCADV.release.xcconfig"; sourceTree = "<group>"; };
 		FF56DD5721AFE3E70080DFBF /* OCADV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCADV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF56DD5A21AFE3E70080DFBF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF56DD5B21AFE3E70080DFBF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +38,24 @@
 		FF56DD6621AFE3E80080DFBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF56DD6821AFE3E80080DFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF56DD6921AFE3E80080DFBF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FF7559D621AFE7DC00F6F08A /* ReactiveCocoaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveCocoaController.h; sourceTree = "<group>"; };
+		FF7559D721AFE7DC00F6F08A /* ReactiveCocoaController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveCocoaController.m; sourceTree = "<group>"; };
+		FF7559DA21AFEC4200F6F08A /* UINavigationController+category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+category.h"; sourceTree = "<group>"; };
+		FF7559DB21AFEC4200F6F08A /* UINavigationController+category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+category.m"; sourceTree = "<group>"; };
+		FF7559DE21AFEF7700F6F08A /* MyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		FF7559DF21AFEF7700F6F08A /* MyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		FF7559E221AFEFE500F6F08A /* CreateSubViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSubViewHandler.h; sourceTree = "<group>"; };
+		FF7559E321AFEFE500F6F08A /* CreateSubViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSubViewHandler.m; sourceTree = "<group>"; };
+		FF7559E721AFF05300F6F08A /* RACView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACView.h; sourceTree = "<group>"; };
+		FF7559E821AFF05300F6F08A /* RACView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RACView.m; sourceTree = "<group>"; };
+		FF7559EA21AFF24100F6F08A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		FF7559EB21AFF37800F6F08A /* Constants.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.pch; sourceTree = "<group>"; };
+		FF7559EC21B0D70D00F6F08A /* AlertUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertUtil.h; sourceTree = "<group>"; };
+		FF7559ED21B0D70D00F6F08A /* AlertUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertUtil.m; sourceTree = "<group>"; };
+		FF7559EF21B0DCF500F6F08A /* ControllerUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControllerUtil.h; sourceTree = "<group>"; };
+		FF7559F021B0DCF500F6F08A /* ControllerUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControllerUtil.m; sourceTree = "<group>"; };
+		FF755A1A21B121E200F6F08A /* UIView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
+		FF755A1B21B121E200F6F08A /* UIView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +63,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8307528D2E55313F824EE730 /* libPods-OCADV.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FBFB8E56C2378BF7429E0E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF861BBF599A30C2847E9A99 /* libPods-OCADV.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3E66761F0FF2598A6400E60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FDD81362AC29D58B0343515 /* Pods-OCADV.debug.xcconfig */,
+				F8510DCDD960DB7776E00042 /* Pods-OCADV.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF56DD4E21AFE3E70080DFBF = {
 			isa = PBXGroup;
 			children = (
 				FF56DD5921AFE3E70080DFBF /* OCADV */,
 				FF56DD5821AFE3E70080DFBF /* Products */,
+				B3E66761F0FF2598A6400E60 /* Pods */,
+				2FBFB8E56C2378BF7429E0E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,17 +108,91 @@
 		FF56DD5921AFE3E70080DFBF /* OCADV */ = {
 			isa = PBXGroup;
 			children = (
-				FF56DD5A21AFE3E70080DFBF /* AppDelegate.h */,
-				FF56DD5B21AFE3E70080DFBF /* AppDelegate.m */,
-				FF56DD5D21AFE3E70080DFBF /* ViewController.h */,
-				FF56DD5E21AFE3E70080DFBF /* ViewController.m */,
+				FF7559D521AFE79D00F6F08A /* Main */,
+				FF7559D421AFE77E00F6F08A /* ReactiveCocoa(RAC) */,
+				FF7559D921AFEC2700F6F08A /* Category */,
+				FF7559DD21AFEF5B00F6F08A /* CustomView */,
+				FF7559E121AFEFD100F6F08A /* Util */,
 				FF56DD6021AFE3E70080DFBF /* Main.storyboard */,
 				FF56DD6321AFE3E80080DFBF /* Assets.xcassets */,
 				FF56DD6521AFE3E80080DFBF /* LaunchScreen.storyboard */,
 				FF56DD6821AFE3E80080DFBF /* Info.plist */,
+				FF7559EA21AFF24100F6F08A /* Constants.h */,
+				FF7559EB21AFF37800F6F08A /* Constants.pch */,
 				FF56DD6921AFE3E80080DFBF /* main.m */,
 			);
 			path = OCADV;
+			sourceTree = "<group>";
+		};
+		FF7559D421AFE77E00F6F08A /* ReactiveCocoa(RAC) */ = {
+			isa = PBXGroup;
+			children = (
+				FF7559E521AFF02000F6F08A /* Controllers */,
+				FF7559E621AFF02F00F6F08A /* Views */,
+			);
+			path = "ReactiveCocoa(RAC)";
+			sourceTree = "<group>";
+		};
+		FF7559D521AFE79D00F6F08A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FF56DD5A21AFE3E70080DFBF /* AppDelegate.h */,
+				FF56DD5B21AFE3E70080DFBF /* AppDelegate.m */,
+				FF56DD5D21AFE3E70080DFBF /* ViewController.h */,
+				FF56DD5E21AFE3E70080DFBF /* ViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FF7559D921AFEC2700F6F08A /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FF755A1A21B121E200F6F08A /* UIView+Category.h */,
+				FF755A1B21B121E200F6F08A /* UIView+Category.m */,
+				FF7559DA21AFEC4200F6F08A /* UINavigationController+category.h */,
+				FF7559DB21AFEC4200F6F08A /* UINavigationController+category.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		FF7559DD21AFEF5B00F6F08A /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				FF7559DE21AFEF7700F6F08A /* MyButton.h */,
+				FF7559DF21AFEF7700F6F08A /* MyButton.m */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		FF7559E121AFEFD100F6F08A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FF7559E221AFEFE500F6F08A /* CreateSubViewHandler.h */,
+				FF7559E321AFEFE500F6F08A /* CreateSubViewHandler.m */,
+				FF7559EC21B0D70D00F6F08A /* AlertUtil.h */,
+				FF7559ED21B0D70D00F6F08A /* AlertUtil.m */,
+				FF7559EF21B0DCF500F6F08A /* ControllerUtil.h */,
+				FF7559F021B0DCF500F6F08A /* ControllerUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FF7559E521AFF02000F6F08A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF7559D621AFE7DC00F6F08A /* ReactiveCocoaController.h */,
+				FF7559D721AFE7DC00F6F08A /* ReactiveCocoaController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FF7559E621AFF02F00F6F08A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF7559E721AFF05300F6F08A /* RACView.h */,
+				FF7559E821AFF05300F6F08A /* RACView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF56DD6D21AFE3E80080DFBF /* Build configuration list for PBXNativeTarget "OCADV" */;
 			buildPhases = (
+				81A06B458C0983E5FA81DFFD /* [CP] Check Pods Manifest.lock */,
 				FF56DD5321AFE3E70080DFBF /* Sources */,
 				FF56DD5421AFE3E70080DFBF /* Frameworks */,
 				FF56DD5521AFE3E70080DFBF /* Resources */,
@@ -136,13 +261,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		81A06B458C0983E5FA81DFFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OCADV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF56DD5321AFE3E70080DFBF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF7559D821AFE7DC00F6F08A /* ReactiveCocoaController.m in Sources */,
 				FF56DD5F21AFE3E70080DFBF /* ViewController.m in Sources */,
 				FF56DD6A21AFE3E80080DFBF /* main.m in Sources */,
+				FF755A1C21B121E200F6F08A /* UIView+Category.m in Sources */,
+				FF7559E021AFEF7700F6F08A /* MyButton.m in Sources */,
+				FF7559E421AFEFE500F6F08A /* CreateSubViewHandler.m in Sources */,
+				FF7559E921AFF05300F6F08A /* RACView.m in Sources */,
+				FF7559EE21B0D70D00F6F08A /* AlertUtil.m in Sources */,
+				FF7559F121B0DCF500F6F08A /* ControllerUtil.m in Sources */,
+				FF7559DC21AFEC4200F6F08A /* UINavigationController+category.m in Sources */,
 				FF56DD5C21AFE3E70080DFBF /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,9 +441,11 @@
 		};
 		FF56DD6E21AFE3E80080DFBF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FDD81362AC29D58B0343515 /* Pods-OCADV.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = OCADV/Constants.pch;
 				INFOPLIST_FILE = OCADV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -299,9 +459,11 @@
 		};
 		FF56DD6F21AFE3E80080DFBF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8510DCDD960DB7776E00042 /* Pods-OCADV.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = OCADV/Constants.pch;
 				INFOPLIST_FILE = OCADV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
