@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CreateSubViewHandler : NSObject
+@interface HYCreateSubViewHandler : NSObject
 // 创建按钮
 + (void)createBtn:(NSArray *)titles fontSize:(CGFloat)fontSize target:(id)target sel: (SEL)selector superView:(UIView *)superView baseTag: (NSInteger)baseTag;
 @end

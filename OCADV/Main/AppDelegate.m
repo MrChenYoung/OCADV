@@ -75,7 +75,7 @@
 }
 
 /**
- * 显示底部l文字，2秒后隐藏
+ * 显示底部文字，2秒后隐藏
  */
 - (void)showBottomTextViewDelay:(NSString *)message
 {

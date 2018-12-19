@@ -37,12 +37,12 @@
 {
     // RAC基本用法
     [self.racView.racSubject subscribeNext:^(id  _Nullable x) {
-        [AlertUtil showAlert:@"RAC基本使用" msg:x inCtr:self];
+        [HYAlertUtil showAlertTitle:@"RAC基本使用" msg:x inCtr:self];
     }];
     
     // RAC简单用法
     [[self.racView rac_signalForSelector:@selector(simpleClick:)] subscribeNext:^(RACTuple * _Nullable x) {
-        [AlertUtil showAlert:@"RAC简单使用" msg:x.first inCtr:self];
+        [HYAlertUtil showAlertTitle:@"RAC简单使用" msg:x.first inCtr:self];
     }];
 }
 

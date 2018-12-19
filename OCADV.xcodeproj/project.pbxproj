@@ -8,26 +8,80 @@
 
 /* Begin PBXBuildFile section */
 		8307528D2E55313F824EE730 /* libPods-OCADV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF861BBF599A30C2847E9A99 /* libPods-OCADV.a */; };
+		FF1170A921C8EE140009880D /* WSServer.js in Resources */ = {isa = PBXBuildFile; fileRef = FF1170A821C8EE140009880D /* WSServer.js */; };
+		FF1170AC21C8EE5C0009880D /* SocketServerWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1170AB21C8EE5C0009880D /* SocketServerWebController.m */; };
+		FF1170AF21C9E9220009880D /* SocketClientWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1170AE21C9E9220009880D /* SocketClientWebController.m */; };
+		FF1170B221C9EA630009880D /* SocketWebSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1170B121C9EA630009880D /* SocketWebSocketClient.m */; };
+		FF1170B721CA508C0009880D /* HYMultiThreadMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1170B621CA508C0009880D /* HYMultiThreadMainController.m */; };
+		FF1170BD21CA537B0009880D /* HYNSThreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1170BC21CA537B0009880D /* HYNSThreadController.m */; };
+		FF1170C421CA58160009880D /* HYPthreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1170C221CA58160009880D /* HYPthreadController.m */; };
+		FF12535D21B52A7E001F0CEE /* RunloopLoadBigPicController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF12535C21B52A7E001F0CEE /* RunloopLoadBigPicController.m */; };
+		FF12536321B52B7D001F0CEE /* BigPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF12536121B52B7D001F0CEE /* BigPictureCell.m */; };
+		FF12536921B52FFB001F0CEE /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF12536621B52FFB001F0CEE /* image3.jpg */; };
+		FF12536B21B52FFB001F0CEE /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF12536821B52FFB001F0CEE /* image2.jpg */; };
+		FF12536F21B62C3C001F0CEE /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF12536E21B62C3C001F0CEE /* image1.jpg */; };
 		FF56DD5C21AFE3E70080DFBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF56DD5B21AFE3E70080DFBF /* AppDelegate.m */; };
 		FF56DD5F21AFE3E70080DFBF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF56DD5E21AFE3E70080DFBF /* ViewController.m */; };
 		FF56DD6221AFE3E70080DFBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF56DD6021AFE3E70080DFBF /* Main.storyboard */; };
 		FF56DD6421AFE3E80080DFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF56DD6321AFE3E80080DFBF /* Assets.xcassets */; };
 		FF56DD6721AFE3E80080DFBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF56DD6521AFE3E80080DFBF /* LaunchScreen.storyboard */; };
 		FF56DD6A21AFE3E80080DFBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF56DD6921AFE3E80080DFBF /* main.m */; };
+		FF6B3B6921BB674B00879A09 /* SocketServerCoreFApiController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6821BB674B00879A09 /* SocketServerCoreFApiController.m */; };
+		FF6B3B6C21BB676A00879A09 /* SocketServerCocoaAsyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6B21BB676A00879A09 /* SocketServerCocoaAsyncController.m */; };
+		FF6B3B6F21BD678300879A09 /* SocketCoreFoundationServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6E21BD678300879A09 /* SocketCoreFoundationServer.m */; };
 		FF7559D821AFE7DC00F6F08A /* ReactiveCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559D721AFE7DC00F6F08A /* ReactiveCocoaController.m */; };
 		FF7559DC21AFEC4200F6F08A /* UINavigationController+category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559DB21AFEC4200F6F08A /* UINavigationController+category.m */; };
-		FF7559E021AFEF7700F6F08A /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559DF21AFEF7700F6F08A /* MyButton.m */; };
-		FF7559E421AFEFE500F6F08A /* CreateSubViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559E321AFEFE500F6F08A /* CreateSubViewHandler.m */; };
+		FF7559E021AFEF7700F6F08A /* HYButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559DF21AFEF7700F6F08A /* HYButton.m */; };
+		FF7559E421AFEFE500F6F08A /* HYCreateSubViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559E321AFEFE500F6F08A /* HYCreateSubViewHandler.m */; };
 		FF7559E921AFF05300F6F08A /* RACView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559E821AFF05300F6F08A /* RACView.m */; };
-		FF7559EE21B0D70D00F6F08A /* AlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559ED21B0D70D00F6F08A /* AlertUtil.m */; };
+		FF7559EE21B0D70D00F6F08A /* HYAlertUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559ED21B0D70D00F6F08A /* HYAlertUtil.m */; };
 		FF7559F121B0DCF500F6F08A /* ControllerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7559F021B0DCF500F6F08A /* ControllerUtil.m */; };
 		FF755A1C21B121E200F6F08A /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF755A1B21B121E200F6F08A /* UIView+Category.m */; };
+		FF755A2021B4CA4600F6F08A /* RunloopController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF755A1F21B4CA4600F6F08A /* RunloopController.m */; };
+		FF755A2321B5148F00F6F08A /* RunloopModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF755A2221B5148F00F6F08A /* RunloopModelController.m */; };
+		FF7F193421BF97C300DB5FE2 /* SocketClientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F193321BF97C300DB5FE2 /* SocketClientModel.m */; };
+		FF7F193721C10D1D00DB5FE2 /* IPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F193621C10D1D00DB5FE2 /* IPUtil.m */; };
+		FFAA4B9C21B9037200D96004 /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4B9B21B9037200D96004 /* HYTableViewCell.m */; };
+		FFAA4B9F21B9055C00D96004 /* SocketServerBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4B9E21B9055C00D96004 /* SocketServerBaseController.m */; };
+		FFAA4BA221B9057200D96004 /* SocketServerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BA121B9057200D96004 /* SocketServerView.m */; };
+		FFAA4BA621B90E0000D96004 /* SocketCoreFoundationClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BA521B90E0000D96004 /* SocketCoreFoundationClient.m */; };
+		FFAA4BA921B9169900D96004 /* SocketCocoaAsyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BA821B9169900D96004 /* SocketCocoaAsyncClient.m */; };
+		FFAA4BAC21B9228D00D96004 /* SocketClientCocoaAsyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BAB21B9228D00D96004 /* SocketClientCocoaAsyncController.m */; };
+		FFAA4BAF21B927A900D96004 /* SocketClientCoreFApiController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BAE21B927A900D96004 /* SocketClientCoreFApiController.m */; };
+		FFAA4BB221B92C0100D96004 /* SocketClientFApiController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BB121B92C0100D96004 /* SocketClientFApiController.m */; };
+		FFAA4BB521B92D2400D96004 /* SocketFoundationClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BB421B92D2400D96004 /* SocketFoundationClient.m */; };
+		FFAA4BB821BA017A00D96004 /* SocketCocoaAsynServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAA4BB721BA017A00D96004 /* SocketCocoaAsynServer.m */; };
+		FFAC414A21B7AE0E0035BEFB /* SocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAC414921B7AE0E0035BEFB /* SocketViewController.m */; };
+		FFAC414F21B8F8080035BEFB /* SocketClientView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAC414E21B8F8080035BEFB /* SocketClientView.m */; };
+		FFAC415221B901F10035BEFB /* SocketClientBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAC415121B901F10035BEFB /* SocketClientBaseController.m */; };
+		FFD25E0021BE7242004327BC /* SocketFoundationServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD25DFF21BE7242004327BC /* SocketFoundationServer.m */; };
+		FFD25E0321BE726D004327BC /* SocketServerFApiController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD25E0221BE726D004327BC /* SocketServerFApiController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3FDD81362AC29D58B0343515 /* Pods-OCADV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCADV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OCADV/Pods-OCADV.debug.xcconfig"; sourceTree = "<group>"; };
 		BF861BBF599A30C2847E9A99 /* libPods-OCADV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OCADV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8510DCDD960DB7776E00042 /* Pods-OCADV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCADV.release.xcconfig"; path = "Pods/Target Support Files/Pods-OCADV/Pods-OCADV.release.xcconfig"; sourceTree = "<group>"; };
+		FF1170A821C8EE140009880D /* WSServer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = WSServer.js; sourceTree = "<group>"; };
+		FF1170AA21C8EE5C0009880D /* SocketServerWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketServerWebController.h; sourceTree = "<group>"; };
+		FF1170AB21C8EE5C0009880D /* SocketServerWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketServerWebController.m; sourceTree = "<group>"; };
+		FF1170AD21C9E9220009880D /* SocketClientWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientWebController.h; sourceTree = "<group>"; };
+		FF1170AE21C9E9220009880D /* SocketClientWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientWebController.m; sourceTree = "<group>"; };
+		FF1170B021C9EA630009880D /* SocketWebSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketWebSocketClient.h; sourceTree = "<group>"; };
+		FF1170B121C9EA630009880D /* SocketWebSocketClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketWebSocketClient.m; sourceTree = "<group>"; };
+		FF1170B521CA508C0009880D /* HYMultiThreadMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMultiThreadMainController.h; sourceTree = "<group>"; };
+		FF1170B621CA508C0009880D /* HYMultiThreadMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMultiThreadMainController.m; sourceTree = "<group>"; };
+		FF1170BB21CA537B0009880D /* HYNSThreadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNSThreadController.h; sourceTree = "<group>"; };
+		FF1170BC21CA537B0009880D /* HYNSThreadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNSThreadController.m; sourceTree = "<group>"; };
+		FF1170C221CA58160009880D /* HYPthreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPthreadController.m; sourceTree = "<group>"; };
+		FF1170C321CA58160009880D /* HYPthreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPthreadController.h; sourceTree = "<group>"; };
+		FF12535B21B52A7E001F0CEE /* RunloopLoadBigPicController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RunloopLoadBigPicController.h; sourceTree = "<group>"; };
+		FF12535C21B52A7E001F0CEE /* RunloopLoadBigPicController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunloopLoadBigPicController.m; sourceTree = "<group>"; };
+		FF12536021B52B7D001F0CEE /* BigPictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigPictureCell.h; sourceTree = "<group>"; };
+		FF12536121B52B7D001F0CEE /* BigPictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigPictureCell.m; sourceTree = "<group>"; };
+		FF12536621B52FFB001F0CEE /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
+		FF12536821B52FFB001F0CEE /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		FF12536E21B62C3C001F0CEE /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
 		FF56DD5721AFE3E70080DFBF /* OCADV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCADV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF56DD5A21AFE3E70080DFBF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF56DD5B21AFE3E70080DFBF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -38,24 +92,69 @@
 		FF56DD6621AFE3E80080DFBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF56DD6821AFE3E80080DFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF56DD6921AFE3E80080DFBF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FF6B3B6721BB674B00879A09 /* SocketServerCoreFApiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketServerCoreFApiController.h; sourceTree = "<group>"; };
+		FF6B3B6821BB674B00879A09 /* SocketServerCoreFApiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketServerCoreFApiController.m; sourceTree = "<group>"; };
+		FF6B3B6A21BB676A00879A09 /* SocketServerCocoaAsyncController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketServerCocoaAsyncController.h; sourceTree = "<group>"; };
+		FF6B3B6B21BB676A00879A09 /* SocketServerCocoaAsyncController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketServerCocoaAsyncController.m; sourceTree = "<group>"; };
+		FF6B3B6D21BD678300879A09 /* SocketCoreFoundationServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketCoreFoundationServer.h; sourceTree = "<group>"; };
+		FF6B3B6E21BD678300879A09 /* SocketCoreFoundationServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketCoreFoundationServer.m; sourceTree = "<group>"; };
 		FF7559D621AFE7DC00F6F08A /* ReactiveCocoaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveCocoaController.h; sourceTree = "<group>"; };
 		FF7559D721AFE7DC00F6F08A /* ReactiveCocoaController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveCocoaController.m; sourceTree = "<group>"; };
 		FF7559DA21AFEC4200F6F08A /* UINavigationController+category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+category.h"; sourceTree = "<group>"; };
 		FF7559DB21AFEC4200F6F08A /* UINavigationController+category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+category.m"; sourceTree = "<group>"; };
-		FF7559DE21AFEF7700F6F08A /* MyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
-		FF7559DF21AFEF7700F6F08A /* MyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
-		FF7559E221AFEFE500F6F08A /* CreateSubViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSubViewHandler.h; sourceTree = "<group>"; };
-		FF7559E321AFEFE500F6F08A /* CreateSubViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSubViewHandler.m; sourceTree = "<group>"; };
+		FF7559DE21AFEF7700F6F08A /* HYButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYButton.h; sourceTree = "<group>"; };
+		FF7559DF21AFEF7700F6F08A /* HYButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYButton.m; sourceTree = "<group>"; };
+		FF7559E221AFEFE500F6F08A /* HYCreateSubViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCreateSubViewHandler.h; sourceTree = "<group>"; };
+		FF7559E321AFEFE500F6F08A /* HYCreateSubViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCreateSubViewHandler.m; sourceTree = "<group>"; };
 		FF7559E721AFF05300F6F08A /* RACView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACView.h; sourceTree = "<group>"; };
 		FF7559E821AFF05300F6F08A /* RACView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RACView.m; sourceTree = "<group>"; };
 		FF7559EA21AFF24100F6F08A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		FF7559EB21AFF37800F6F08A /* Constants.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.pch; sourceTree = "<group>"; };
-		FF7559EC21B0D70D00F6F08A /* AlertUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertUtil.h; sourceTree = "<group>"; };
-		FF7559ED21B0D70D00F6F08A /* AlertUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertUtil.m; sourceTree = "<group>"; };
+		FF7559EC21B0D70D00F6F08A /* HYAlertUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAlertUtil.h; sourceTree = "<group>"; };
+		FF7559ED21B0D70D00F6F08A /* HYAlertUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAlertUtil.m; sourceTree = "<group>"; };
 		FF7559EF21B0DCF500F6F08A /* ControllerUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControllerUtil.h; sourceTree = "<group>"; };
 		FF7559F021B0DCF500F6F08A /* ControllerUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControllerUtil.m; sourceTree = "<group>"; };
 		FF755A1A21B121E200F6F08A /* UIView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Category.h"; sourceTree = "<group>"; };
 		FF755A1B21B121E200F6F08A /* UIView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Category.m"; sourceTree = "<group>"; };
+		FF755A1E21B4CA4600F6F08A /* RunloopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RunloopController.h; sourceTree = "<group>"; };
+		FF755A1F21B4CA4600F6F08A /* RunloopController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunloopController.m; sourceTree = "<group>"; };
+		FF755A2121B5148F00F6F08A /* RunloopModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RunloopModelController.h; sourceTree = "<group>"; };
+		FF755A2221B5148F00F6F08A /* RunloopModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunloopModelController.m; sourceTree = "<group>"; };
+		FF7F193221BF97C300DB5FE2 /* SocketClientModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientModel.h; sourceTree = "<group>"; };
+		FF7F193321BF97C300DB5FE2 /* SocketClientModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientModel.m; sourceTree = "<group>"; };
+		FF7F193521C10D1D00DB5FE2 /* IPUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPUtil.h; sourceTree = "<group>"; };
+		FF7F193621C10D1D00DB5FE2 /* IPUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPUtil.m; sourceTree = "<group>"; };
+		FFAA4B9A21B9037200D96004 /* HYTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTableViewCell.h; sourceTree = "<group>"; };
+		FFAA4B9B21B9037200D96004 /* HYTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTableViewCell.m; sourceTree = "<group>"; };
+		FFAA4B9D21B9055C00D96004 /* SocketServerBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketServerBaseController.h; sourceTree = "<group>"; };
+		FFAA4B9E21B9055C00D96004 /* SocketServerBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketServerBaseController.m; sourceTree = "<group>"; };
+		FFAA4BA021B9057200D96004 /* SocketServerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketServerView.h; sourceTree = "<group>"; };
+		FFAA4BA121B9057200D96004 /* SocketServerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketServerView.m; sourceTree = "<group>"; };
+		FFAA4BA421B90E0000D96004 /* SocketCoreFoundationClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketCoreFoundationClient.h; sourceTree = "<group>"; };
+		FFAA4BA521B90E0000D96004 /* SocketCoreFoundationClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketCoreFoundationClient.m; sourceTree = "<group>"; };
+		FFAA4BA721B9169900D96004 /* SocketCocoaAsyncClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketCocoaAsyncClient.h; sourceTree = "<group>"; };
+		FFAA4BA821B9169900D96004 /* SocketCocoaAsyncClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketCocoaAsyncClient.m; sourceTree = "<group>"; };
+		FFAA4BAA21B9228D00D96004 /* SocketClientCocoaAsyncController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientCocoaAsyncController.h; sourceTree = "<group>"; };
+		FFAA4BAB21B9228D00D96004 /* SocketClientCocoaAsyncController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientCocoaAsyncController.m; sourceTree = "<group>"; };
+		FFAA4BAD21B927A900D96004 /* SocketClientCoreFApiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientCoreFApiController.h; sourceTree = "<group>"; };
+		FFAA4BAE21B927A900D96004 /* SocketClientCoreFApiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientCoreFApiController.m; sourceTree = "<group>"; };
+		FFAA4BB021B92C0100D96004 /* SocketClientFApiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientFApiController.h; sourceTree = "<group>"; };
+		FFAA4BB121B92C0100D96004 /* SocketClientFApiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientFApiController.m; sourceTree = "<group>"; };
+		FFAA4BB321B92D2400D96004 /* SocketFoundationClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketFoundationClient.h; sourceTree = "<group>"; };
+		FFAA4BB421B92D2400D96004 /* SocketFoundationClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketFoundationClient.m; sourceTree = "<group>"; };
+		FFAA4BB621BA017A00D96004 /* SocketCocoaAsynServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketCocoaAsynServer.h; sourceTree = "<group>"; };
+		FFAA4BB721BA017A00D96004 /* SocketCocoaAsynServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketCocoaAsynServer.m; sourceTree = "<group>"; };
+		FFAC414521B654A60035BEFB /* libReactiveObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReactiveObjC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFAC414821B7AE0E0035BEFB /* SocketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketViewController.h; sourceTree = "<group>"; };
+		FFAC414921B7AE0E0035BEFB /* SocketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketViewController.m; sourceTree = "<group>"; };
+		FFAC414D21B8F8080035BEFB /* SocketClientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientView.h; sourceTree = "<group>"; };
+		FFAC414E21B8F8080035BEFB /* SocketClientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientView.m; sourceTree = "<group>"; };
+		FFAC415021B901F10035BEFB /* SocketClientBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketClientBaseController.h; sourceTree = "<group>"; };
+		FFAC415121B901F10035BEFB /* SocketClientBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketClientBaseController.m; sourceTree = "<group>"; };
+		FFD25DFE21BE7242004327BC /* SocketFoundationServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketFoundationServer.h; sourceTree = "<group>"; };
+		FFD25DFF21BE7242004327BC /* SocketFoundationServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketFoundationServer.m; sourceTree = "<group>"; };
+		FFD25E0121BE726D004327BC /* SocketServerFApiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocketServerFApiController.h; sourceTree = "<group>"; };
+		FFD25E0221BE726D004327BC /* SocketServerFApiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketServerFApiController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +172,7 @@
 		2FBFB8E56C2378BF7429E0E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFAC414521B654A60035BEFB /* libReactiveObjC.a */,
 				BF861BBF599A30C2847E9A99 /* libPods-OCADV.a */,
 			);
 			name = Frameworks;
@@ -85,6 +185,75 @@
 				F8510DCDD960DB7776E00042 /* Pods-OCADV.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FF1170A721C8EDDA0009880D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF1170A821C8EE140009880D /* WSServer.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FF1170B321CA503E0009880D /* MultiThread */ = {
+			isa = PBXGroup;
+			children = (
+				FF1170B421CA50720009880D /* Controllers */,
+				FF1170BE21CA55470009880D /* ViewModel */,
+			);
+			path = MultiThread;
+			sourceTree = "<group>";
+		};
+		FF1170B421CA50720009880D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF1170B521CA508C0009880D /* HYMultiThreadMainController.h */,
+				FF1170B621CA508C0009880D /* HYMultiThreadMainController.m */,
+				FF1170C321CA58160009880D /* HYPthreadController.h */,
+				FF1170C221CA58160009880D /* HYPthreadController.m */,
+				FF1170BB21CA537B0009880D /* HYNSThreadController.h */,
+				FF1170BC21CA537B0009880D /* HYNSThreadController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FF1170BE21CA55470009880D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF12535E21B52B4D001F0CEE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF755A1E21B4CA4600F6F08A /* RunloopController.h */,
+				FF755A1F21B4CA4600F6F08A /* RunloopController.m */,
+				FF755A2121B5148F00F6F08A /* RunloopModelController.h */,
+				FF755A2221B5148F00F6F08A /* RunloopModelController.m */,
+				FF12535B21B52A7E001F0CEE /* RunloopLoadBigPicController.h */,
+				FF12535C21B52A7E001F0CEE /* RunloopLoadBigPicController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FF12535F21B52B5A001F0CEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF12536021B52B7D001F0CEE /* BigPictureCell.h */,
+				FF12536121B52B7D001F0CEE /* BigPictureCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF12536521B52E9C001F0CEE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FF12536E21B62C3C001F0CEE /* image1.jpg */,
+				FF12536821B52FFB001F0CEE /* image2.jpg */,
+				FF12536621B52FFB001F0CEE /* image3.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		FF56DD4E21AFE3E70080DFBF = {
@@ -110,9 +279,13 @@
 			children = (
 				FF7559D521AFE79D00F6F08A /* Main */,
 				FF7559D421AFE77E00F6F08A /* ReactiveCocoa(RAC) */,
+				FF755A1D21B4CA2600F6F08A /* Runloop */,
+				FFAC414721B7ADED0035BEFB /* Socket */,
+				FF1170B321CA503E0009880D /* MultiThread */,
 				FF7559D921AFEC2700F6F08A /* Category */,
 				FF7559DD21AFEF5B00F6F08A /* CustomView */,
 				FF7559E121AFEFD100F6F08A /* Util */,
+				FF12536521B52E9C001F0CEE /* Images */,
 				FF56DD6021AFE3E70080DFBF /* Main.storyboard */,
 				FF56DD6321AFE3E80080DFBF /* Assets.xcassets */,
 				FF56DD6521AFE3E80080DFBF /* LaunchScreen.storyboard */,
@@ -158,8 +331,10 @@
 		FF7559DD21AFEF5B00F6F08A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				FF7559DE21AFEF7700F6F08A /* MyButton.h */,
-				FF7559DF21AFEF7700F6F08A /* MyButton.m */,
+				FF7559DE21AFEF7700F6F08A /* HYButton.h */,
+				FF7559DF21AFEF7700F6F08A /* HYButton.m */,
+				FFAA4B9A21B9037200D96004 /* HYTableViewCell.h */,
+				FFAA4B9B21B9037200D96004 /* HYTableViewCell.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -167,12 +342,14 @@
 		FF7559E121AFEFD100F6F08A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				FF7559E221AFEFE500F6F08A /* CreateSubViewHandler.h */,
-				FF7559E321AFEFE500F6F08A /* CreateSubViewHandler.m */,
-				FF7559EC21B0D70D00F6F08A /* AlertUtil.h */,
-				FF7559ED21B0D70D00F6F08A /* AlertUtil.m */,
+				FF7559E221AFEFE500F6F08A /* HYCreateSubViewHandler.h */,
+				FF7559E321AFEFE500F6F08A /* HYCreateSubViewHandler.m */,
+				FF7559EC21B0D70D00F6F08A /* HYAlertUtil.h */,
+				FF7559ED21B0D70D00F6F08A /* HYAlertUtil.m */,
 				FF7559EF21B0DCF500F6F08A /* ControllerUtil.h */,
 				FF7559F021B0DCF500F6F08A /* ControllerUtil.m */,
+				FF7F193521C10D1D00DB5FE2 /* IPUtil.h */,
+				FF7F193621C10D1D00DB5FE2 /* IPUtil.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -191,6 +368,97 @@
 			children = (
 				FF7559E721AFF05300F6F08A /* RACView.h */,
 				FF7559E821AFF05300F6F08A /* RACView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF755A1D21B4CA2600F6F08A /* Runloop */ = {
+			isa = PBXGroup;
+			children = (
+				FF12535E21B52B4D001F0CEE /* Controllers */,
+				FF12535F21B52B5A001F0CEE /* Views */,
+			);
+			path = Runloop;
+			sourceTree = "<group>";
+		};
+		FF7F193121BF978C00DB5FE2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF7F193221BF97C300DB5FE2 /* SocketClientModel.h */,
+				FF7F193321BF97C300DB5FE2 /* SocketClientModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFAA4BA321B90D9900D96004 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FFAA4BA421B90E0000D96004 /* SocketCoreFoundationClient.h */,
+				FFAA4BA521B90E0000D96004 /* SocketCoreFoundationClient.m */,
+				FFAA4BB321B92D2400D96004 /* SocketFoundationClient.h */,
+				FFAA4BB421B92D2400D96004 /* SocketFoundationClient.m */,
+				FFAA4BA721B9169900D96004 /* SocketCocoaAsyncClient.h */,
+				FFAA4BA821B9169900D96004 /* SocketCocoaAsyncClient.m */,
+				FF1170B021C9EA630009880D /* SocketWebSocketClient.h */,
+				FF1170B121C9EA630009880D /* SocketWebSocketClient.m */,
+				FF6B3B6D21BD678300879A09 /* SocketCoreFoundationServer.h */,
+				FF6B3B6E21BD678300879A09 /* SocketCoreFoundationServer.m */,
+				FFD25DFE21BE7242004327BC /* SocketFoundationServer.h */,
+				FFD25DFF21BE7242004327BC /* SocketFoundationServer.m */,
+				FFAA4BB621BA017A00D96004 /* SocketCocoaAsynServer.h */,
+				FFAA4BB721BA017A00D96004 /* SocketCocoaAsynServer.m */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		FFAC414721B7ADED0035BEFB /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				FF1170A721C8EDDA0009880D /* Resources */,
+				FFAC414B21B8F5B70035BEFB /* ViewControllers */,
+				FFAC414C21B8F7E80035BEFB /* Views */,
+				FFAA4BA321B90D9900D96004 /* viewModel */,
+				FF7F193121BF978C00DB5FE2 /* Model */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		FFAC414B21B8F5B70035BEFB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC414821B7AE0E0035BEFB /* SocketViewController.h */,
+				FFAC414921B7AE0E0035BEFB /* SocketViewController.m */,
+				FFAC415021B901F10035BEFB /* SocketClientBaseController.h */,
+				FFAC415121B901F10035BEFB /* SocketClientBaseController.m */,
+				FFAA4BAD21B927A900D96004 /* SocketClientCoreFApiController.h */,
+				FFAA4BAE21B927A900D96004 /* SocketClientCoreFApiController.m */,
+				FFAA4BB021B92C0100D96004 /* SocketClientFApiController.h */,
+				FFAA4BB121B92C0100D96004 /* SocketClientFApiController.m */,
+				FFAA4BAA21B9228D00D96004 /* SocketClientCocoaAsyncController.h */,
+				FFAA4BAB21B9228D00D96004 /* SocketClientCocoaAsyncController.m */,
+				FF1170AD21C9E9220009880D /* SocketClientWebController.h */,
+				FF1170AE21C9E9220009880D /* SocketClientWebController.m */,
+				FFAA4B9D21B9055C00D96004 /* SocketServerBaseController.h */,
+				FFAA4B9E21B9055C00D96004 /* SocketServerBaseController.m */,
+				FF6B3B6721BB674B00879A09 /* SocketServerCoreFApiController.h */,
+				FF6B3B6821BB674B00879A09 /* SocketServerCoreFApiController.m */,
+				FFD25E0121BE726D004327BC /* SocketServerFApiController.h */,
+				FFD25E0221BE726D004327BC /* SocketServerFApiController.m */,
+				FF6B3B6A21BB676A00879A09 /* SocketServerCocoaAsyncController.h */,
+				FF6B3B6B21BB676A00879A09 /* SocketServerCocoaAsyncController.m */,
+				FF1170AA21C8EE5C0009880D /* SocketServerWebController.h */,
+				FF1170AB21C8EE5C0009880D /* SocketServerWebController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FFAC414C21B8F7E80035BEFB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC414D21B8F8080035BEFB /* SocketClientView.h */,
+				FFAC414E21B8F8080035BEFB /* SocketClientView.m */,
+				FFAA4BA021B9057200D96004 /* SocketServerView.h */,
+				FFAA4BA121B9057200D96004 /* SocketServerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +490,7 @@
 		FF56DD4F21AFE3E70080DFBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HY;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = MrChen;
 				TargetAttributes = {
@@ -253,9 +522,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF12536F21B62C3C001F0CEE /* image1.jpg in Resources */,
 				FF56DD6721AFE3E80080DFBF /* LaunchScreen.storyboard in Resources */,
+				FF1170A921C8EE140009880D /* WSServer.js in Resources */,
 				FF56DD6421AFE3E80080DFBF /* Assets.xcassets in Resources */,
 				FF56DD6221AFE3E70080DFBF /* Main.storyboard in Resources */,
+				FF12536B21B52FFB001F0CEE /* image2.jpg in Resources */,
+				FF12536921B52FFB001F0CEE /* image3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,16 +565,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF7559D821AFE7DC00F6F08A /* ReactiveCocoaController.m in Sources */,
+				FF1170B721CA508C0009880D /* HYMultiThreadMainController.m in Sources */,
+				FF12536321B52B7D001F0CEE /* BigPictureCell.m in Sources */,
+				FF6B3B6C21BB676A00879A09 /* SocketServerCocoaAsyncController.m in Sources */,
+				FF1170C421CA58160009880D /* HYPthreadController.m in Sources */,
+				FF755A2021B4CA4600F6F08A /* RunloopController.m in Sources */,
+				FF6B3B6F21BD678300879A09 /* SocketCoreFoundationServer.m in Sources */,
 				FF56DD5F21AFE3E70080DFBF /* ViewController.m in Sources */,
+				FFAA4BAC21B9228D00D96004 /* SocketClientCocoaAsyncController.m in Sources */,
 				FF56DD6A21AFE3E80080DFBF /* main.m in Sources */,
+				FFAA4BB821BA017A00D96004 /* SocketCocoaAsynServer.m in Sources */,
+				FFAA4BA221B9057200D96004 /* SocketServerView.m in Sources */,
+				FF1170BD21CA537B0009880D /* HYNSThreadController.m in Sources */,
+				FFD25E0021BE7242004327BC /* SocketFoundationServer.m in Sources */,
 				FF755A1C21B121E200F6F08A /* UIView+Category.m in Sources */,
-				FF7559E021AFEF7700F6F08A /* MyButton.m in Sources */,
-				FF7559E421AFEFE500F6F08A /* CreateSubViewHandler.m in Sources */,
+				FF7559E021AFEF7700F6F08A /* HYButton.m in Sources */,
+				FFD25E0321BE726D004327BC /* SocketServerFApiController.m in Sources */,
+				FFAC414F21B8F8080035BEFB /* SocketClientView.m in Sources */,
+				FF1170B221C9EA630009880D /* SocketWebSocketClient.m in Sources */,
+				FFAA4BB521B92D2400D96004 /* SocketFoundationClient.m in Sources */,
+				FF1170AC21C8EE5C0009880D /* SocketServerWebController.m in Sources */,
+				FF7559E421AFEFE500F6F08A /* HYCreateSubViewHandler.m in Sources */,
 				FF7559E921AFF05300F6F08A /* RACView.m in Sources */,
-				FF7559EE21B0D70D00F6F08A /* AlertUtil.m in Sources */,
+				FFAC414A21B7AE0E0035BEFB /* SocketViewController.m in Sources */,
+				FF7559EE21B0D70D00F6F08A /* HYAlertUtil.m in Sources */,
+				FFAA4BA921B9169900D96004 /* SocketCocoaAsyncClient.m in Sources */,
+				FFAA4B9C21B9037200D96004 /* HYTableViewCell.m in Sources */,
+				FF12535D21B52A7E001F0CEE /* RunloopLoadBigPicController.m in Sources */,
 				FF7559F121B0DCF500F6F08A /* ControllerUtil.m in Sources */,
+				FF755A2321B5148F00F6F08A /* RunloopModelController.m in Sources */,
+				FF7F193721C10D1D00DB5FE2 /* IPUtil.m in Sources */,
+				FF7F193421BF97C300DB5FE2 /* SocketClientModel.m in Sources */,
+				FF1170AF21C9E9220009880D /* SocketClientWebController.m in Sources */,
+				FFAA4BB221B92C0100D96004 /* SocketClientFApiController.m in Sources */,
+				FF6B3B6921BB674B00879A09 /* SocketServerCoreFApiController.m in Sources */,
+				FFAA4BAF21B927A900D96004 /* SocketClientCoreFApiController.m in Sources */,
 				FF7559DC21AFEC4200F6F08A /* UINavigationController+category.m in Sources */,
 				FF56DD5C21AFE3E70080DFBF /* AppDelegate.m in Sources */,
+				FFAC415221B901F10035BEFB /* SocketClientBaseController.m in Sources */,
+				FFAA4BA621B90E0000D96004 /* SocketCoreFoundationClient.m in Sources */,
+				FFAA4B9F21B9055C00D96004 /* SocketServerBaseController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,8 +748,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D84XDPWAFE;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = OCADV/Constants.pch;
 				INFOPLIST_FILE = OCADV/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,8 +769,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D84XDPWAFE;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = OCADV/Constants.pch;
 				INFOPLIST_FILE = OCADV/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

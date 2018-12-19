@@ -66,7 +66,7 @@
     CGRect monitorClickFrame = CGRectMake(x, CGRectGetMaxY(simpleBtnFrame) + 10, w, h);
     UIButton *monitorBtn = [self createButton:monitorClickFrame title:@"RAC监听按钮点击" selector:nil];
     [[monitorBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        [AlertUtil showAlert:@"RAC监听按钮点击" msg:@"RAC监听的按钮点击了" inCtr:[ControllerUtil topViewController]];
+        [HYAlertUtil showAlertTitle:@"RAC监听按钮点击" msg:@"RAC监听的按钮点击了" inCtr:[ControllerUtil topViewController]];
         
         // 返回的参数是monitorBtn本身
         NSLog(@"%@",x);

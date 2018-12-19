@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "ReactiveCocoaController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,7 +29,19 @@
     [self.view addSubview:self.tableView];
     
     // 初始化列表数据
-    self.listData = @[@"ReactiveCocoa(RAC)"];
+    self.listData = @[@{CELLTITLE:@"ReactiveCocoa(RAC)",
+                        CELLDESCRIPTION:@"函数响应式编程应用",
+                        CONTROLLERNAME:@"ReactiveCocoaController"},
+                      @{CELLTITLE:@"Runloop",
+                        CELLDESCRIPTION:@"运行循环剖析",
+                        CONTROLLERNAME:@"RunloopController"},
+                      @{CELLTITLE:@"Socket",
+                        CELLDESCRIPTION:@"即时通讯常用技术",
+                        CONTROLLERNAME:@"SocketViewController"},
+                      @{CELLTITLE:@"多线程",
+                        CELLDESCRIPTION:@"iOS多线程开发常用技能",
+                        CONTROLLERNAME:@"MultiThreadMainController"}
+                      ];
 }
 
 /**
@@ -61,14 +72,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *reuserId = @"reuserId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuserId];
+    HYTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuserId];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuserId];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell = [[HYTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuserId];
     }
     
-    cell.textLabel.text = self.listData[indexPath.row];
+    NSDictionary *dic = self.listData[indexPath.row];
+    cell.textLabel.text = dic[CELLTITLE];
+    cell.detailTextLabel.text = dic[CELLDESCRIPTION];
     return cell;
 }
 
@@ -79,13 +90,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // 跳转到指定页面
-    NSString *selectTitle = self.listData[indexPath.row];
-    if ([selectTitle isEqualToString:@"ReactiveCocoa(RAC)"]) {
-        // RAC页面
-        ReactiveCocoaController *racCtr = [[ReactiveCocoaController alloc]init];
-        [self.navigationController pushViewController:racCtr animated:YES];
-    }
-    
+    NSDictionary *dic = self.listData[indexPath.row];
+    NSString *controllerName = dic[CONTROLLERNAME];
+    UIViewController *ctr = [[NSClassFromString(controllerName) alloc]init];
+    [self.navigationController pushViewController:ctr animated:YES];
 }
 
 

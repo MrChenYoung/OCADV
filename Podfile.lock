@@ -1,16 +1,28 @@
 PODS:
+  - CocoaAsyncSocket (7.6.3)
   - ReactiveObjC (3.1.0)
+  - SocketRocket (0.5.1)
+  - ZWPlaceHolder (0.0.2)
 
 DEPENDENCIES:
+  - CocoaAsyncSocket (~> 7.6.3)
   - ReactiveObjC
+  - SocketRocket
+  - ZWPlaceHolder (~> 0.0.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CocoaAsyncSocket
     - ReactiveObjC
+    - SocketRocket
+    - ZWPlaceHolder
 
 SPEC CHECKSUMS:
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  ZWPlaceHolder: d55cce10c9930b48c31bf48e7f4748974a31f7e0
 
-PODFILE CHECKSUM: 480eeca4c8c0030bd901b1389b86a435a6ca1f5e
+PODFILE CHECKSUM: f1bba3d39823e8ac8af8e66343e611a8a0252294
 
 COCOAPODS: 1.5.3

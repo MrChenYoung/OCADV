@@ -1,8 +1,8 @@
 //
-//  MyButton.h
+//  RunloopModelController.h
 //  OCADV
 //
-//  Created by MrChen on 2018/11/29.
+//  Created by MrChen on 2018/12/3.
 //  Copyright © 2018 MrChen. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MyButton : UIButton
+@interface RunloopModelController : UIViewController
 
 @end
 

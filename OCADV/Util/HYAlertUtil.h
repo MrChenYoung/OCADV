@@ -10,12 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AlertUtil : NSObject
+@interface HYAlertUtil : NSObject
 
 /**
  * 显示alert
  */
-+ (void)showAlert:(NSString *)title msg:(NSString *)message inCtr:(UIViewController *)ctr;
++ (void)showAlertTitle:(NSString *)title msg:(NSString *)message inCtr:(nullable UIViewController *)ctr;
 
 @end
 
