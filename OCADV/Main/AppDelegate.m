@@ -36,9 +36,20 @@
     // 隐藏状态栏
     [UIApplication sharedApplication].statusBarHidden = YES;
     
+    // 预加载必要数据
+    [self preloadNecessaryData];
+    
     return YES;
 }
 
+/**
+ * 预加载必要数据
+ */
+- (void)preloadNecessaryData
+{
+    // 加载要下载的电影信息
+    [HYMoviesResolver share];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

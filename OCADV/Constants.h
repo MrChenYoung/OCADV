@@ -23,6 +23,8 @@
 #define AppDelegateInstance (AppDelegate *)[UIApplication sharedApplication].delegate
 
 // 颜色
+#define ColorWithRGBA(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+#define ColorWithRGB(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
 #define ColorMain [UIColor colorWithRed:0/255.0 green:150/255.0 blue:255/255.0 alpha:1]
 #define ColorLightGray [UIColor colorWithRed:195.0/255.0 green:195.0/255.0 blue:195.0/255.0 alpha:1]
 

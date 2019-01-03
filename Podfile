@@ -11,6 +11,8 @@ pod 'ReactiveObjC'
 pod 'ZWPlaceHolder', '~> 0.0.2'
 pod 'CocoaAsyncSocket', '~> 7.6.3'
 pod 'SocketRocket'
+pod 'SVProgressHUD' #加载loading第三方
+pod 'AFNetworking' #网络请求第三方框架
 
 #post_install do |installer|
 #        copy_pods_resources_path = "Pods/Target Support Files/Pods-OCADV/Pods-OCADV-resources.sh"

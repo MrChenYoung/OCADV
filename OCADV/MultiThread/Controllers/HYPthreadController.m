@@ -8,7 +8,8 @@
 
 #import "HYPthreadController.h"
 
-@interface HYPthreadController ()
+@interface HYPthreadController ()<UITableViewDataSource,UITableViewDelegate>
+
 
 @end
 
@@ -16,10 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"pthread";
-    
+
+    self.data = @[@{CELLTITLE:@"pthread多线程下载",
+                    CELLDESCRIPTION:@"多线程下载单个文件",
+                    CONTROLLERNAME:@"HYPthreadSingleFileController"},
+                  @{CELLTITLE:@"pthread多线程下载",
+                    CELLDESCRIPTION:@"多线程下载多个文件",
+                    CONTROLLERNAME:@"HYPthreadMultiFileController"}];
 }
+
 
 
 @end

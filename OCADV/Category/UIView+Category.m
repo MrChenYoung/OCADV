@@ -259,4 +259,44 @@ static const NSString * CSToastDefaultPosition  = @"bottom";
     return [self centerPointForPosition:CSToastDefaultPosition withToast:toast];
 }
 
+#pragma mark - 把view转换成图片
+/**
+ * 根据View生成图片
+ */
+- (UIImage *)toImage
+{
+    return [self toImageFromReact:self.bounds];;
+}
+
+/**
+ * 根据View在指定位置生成指定大小的图片
+ */
+- (UIImage *)toImageFromReact:(CGRect)react
+{
+    // 根据view获取图片
+    CGSize viewSize = self.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(viewSize, YES, [UIScreen mainScreen].scale);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 根据react裁剪图片
+    image = [UIImage imageWithCGImage:CGImageCreateWithImageInRect(image.CGImage, react)];
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+#pragma mark - 获取和view大小相同的毛玻璃后效果view
+/**
+ * 获取和view大小相同的毛玻璃后效果view
+ */
+- (UIView *)blurEffectView
+{
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+    blurEffectView.frame = self.bounds;
+    blurEffectView.alpha = 1;
+    return blurEffectView;
+}
+
 @end

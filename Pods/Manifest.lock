@@ -1,28 +1,50 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - CocoaAsyncSocket (7.6.3)
   - ReactiveObjC (3.1.0)
   - SocketRocket (0.5.1)
+  - SVProgressHUD (2.2.5)
   - ZWPlaceHolder (0.0.2)
 
 DEPENDENCIES:
+  - AFNetworking
   - CocoaAsyncSocket (~> 7.6.3)
   - ReactiveObjC
   - SocketRocket
+  - SVProgressHUD
   - ZWPlaceHolder (~> 0.0.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AFNetworking
     - CocoaAsyncSocket
     - ReactiveObjC
     - SocketRocket
+    - SVProgressHUD
     - ZWPlaceHolder
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   ZWPlaceHolder: d55cce10c9930b48c31bf48e7f4748974a31f7e0
 
-PODFILE CHECKSUM: f1bba3d39823e8ac8af8e66343e611a8a0252294
+PODFILE CHECKSUM: c2873f93a85be01fee78b83151a5f5ade8936ce0
 
 COCOAPODS: 1.5.3

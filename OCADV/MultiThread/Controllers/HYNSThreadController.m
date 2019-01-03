@@ -16,17 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.data = @[@{CELLTITLE:@"NSThread多线程下载",
+                    CELLDESCRIPTION:@"多线程下载单个文件",
+                    CONTROLLERNAME:@"HYNSThreadSingleFileController"},
+                  @{CELLTITLE:@"NSThread多线程下载",
+                    CELLDESCRIPTION:@"多线程下载多个文件",
+                    CONTROLLERNAME:@"HYNSThreadMultiFileController"}];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

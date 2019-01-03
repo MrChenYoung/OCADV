@@ -39,5 +39,20 @@
 
 - (void)hideToastActivity;
 
+/**
+ * 根据View生成图片
+ */
+- (UIImage *)toImage;
+
+/**
+ * 根据View在指定位置生成指定大小的图片
+ */
+- (UIImage *)toImageFromReact:(CGRect)react;
+
+#pragma mark - 获取和view大小相同的毛玻璃后效果view
+/**
+ * 获取和view大小相同的毛玻璃后效果view
+ */
+- (UIView *)blurEffectView;
 
 @end

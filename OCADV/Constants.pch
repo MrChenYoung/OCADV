@@ -10,6 +10,7 @@
 #define Constants_pch
 
 #import "AppDelegate.h"
+#import "HYTableViewBaseController.h"
 #import "Constants.h"
 #import <ReactiveObjC.h>
 #import "HYAlertUtil.h"
@@ -19,7 +20,13 @@
 #import <UITextView+ZWPlaceHolder.h>
 #import "HYTableViewCell.h"
 #import <GCDAsyncSocket.h>
-#import "SocketClientModel.h"
+#import "HYSocketClientModel.h"
 #import "IPUtil.h"
+#import "APIMacro.h"
+#import <SVProgressHUD.h>
+#import "NSData+Category.h"
+#import "HYToast.h"
+#import "HYMoviesResolver.h"
+#import "HYDownloadView.h"
 
 #endif /* Constants_pch */
