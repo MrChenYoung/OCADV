@@ -8,19 +8,21 @@
 
 #import "HYURLConnectionController.h"
 #import "HYURLConnectionUtil.h"
+#import "HYURLConnectionDownload.h"
+#import "HYURLConnectionUpload.h"
 #import "HYAFNRequestUtil.h"
-#import "HYPlayVideoController.h"
+#import "HYCheckVideoOrImageController.h"
 
-@interface HYURLConnectionController ()
+@interface HYURLConnectionController ()<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
-@property (nonatomic, strong) HYURLConnectionUtil *urlConnection;
+@property (nonatomic, strong) HYURLConnectionDownload *urlConnection;
 @end
 
 @implementation HYURLConnectionController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.urlConnection = [HYURLConnectionUtil share];
+    self.urlConnection = [HYURLConnectionDownload share];
     
     [self loadRequests];
 }
@@ -140,11 +142,37 @@
         }
     };
     
-    // 播放回调
-    self.playBlock = ^{
+    // 上传照片回调
+    self.uploadImageBlock = ^(HYUploadImageModel * _Nonnull imageModel) {
+        NSString *url = @"http://testapi.babatruck.com/app/file/Upload?folder=signpic";
+        NSData *data = UIImagePNGRepresentation(imageModel.image);
+        NSDictionary *header = @{@"Token":@"995929bf-83f7-4e79-95d5-d3d96d7de489"};
+        [[HYURLConnectionUpload share] uploadFile:url paramName:@"picture" fileName:@"20190108.png" contentType:@"image/png" header:header fileData:data success:^(NSString *response) {
+            // 请求成功 记录服务器返回的图片网络地址
+            NSData *data = [response dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSString *imageUrl = dic[@"Data"];
+            if (imageUrl.length > 0) {
+                imageModel.remoteUrl = imageUrl;
+            }
+        } faile:^(NSError *error, NSString *errorMessage) {
+            // 请求失败
+            [HYToast toastWithMessage:errorMessage];
+        } progress:^(CGFloat progress) {
+            [weakSelf uploadProgressChanged:progress imageIndex:imageModel.imageIndex];
+        } finish:^{
+            // 上传完成
+            imageModel.status = uploadStatusLoad;
+            weakSelf.updatedImageModel = imageModel;
+        }];
+    };
+    
+    // 进入m3u8视频下载页面
+    self.toM3u8DownloadControllerBlock = ^{
         
     };
 }
+
 
 - (void)testRequest
 {

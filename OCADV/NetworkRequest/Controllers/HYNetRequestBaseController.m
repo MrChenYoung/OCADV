@@ -8,7 +8,9 @@
 
 #import "HYNetRequestBaseController.h"
 #import "HYDownloadFileModel.h"
-#import "HYPlayVideoController.h"
+#import "HYCheckVideoOrImageController.h"
+#import "HYUploadView.h"
+#import "HYM3u8VedioDownloadController.h"
 
 @interface HYNetRequestBaseController ()
 
@@ -23,6 +25,10 @@
 
 // 当前view添加上毛玻璃效果后的截图(视频下载完以后点击播放动画用)
 @property (nonatomic, strong) UIImage *screenShotImage;
+
+// 上传文件视图
+@property (nonatomic, strong) HYUploadView *uploadView;
+
 @end
 
 @implementation HYNetRequestBaseController
@@ -154,28 +160,7 @@
     // 播放回调
     downloadView.playBlock = ^{
         // 动画弹出播放视频界面
-    
-        // 第一步动画 抛物线动画移动
-        CGFloat radius = 30.0;
-        [weakSelf showPlayViewAnimationViewRadius:radius completion:^{
-            // 第一步动画完成,开始第二步扩散圆形展示动画(使用自定义present controller转场动画做)
-            HYPlayVideoController *playVideoCtr = [[HYPlayVideoController alloc]init];
-            playVideoCtr.fromReact = CGRectMake(weakSelf.view.center.x - radius, weakSelf.view.center.y - radius, radius * 2.0, radius * 2.0);
-            playVideoCtr.modalPresentationStyle = UIModalPresentationOverCurrentContext | UIModalPresentationFullScreen;
-            [weakSelf presentViewController:playVideoCtr animated:YES completion:nil];
-
-            // 播放视频界面消失以后动画
-            playVideoCtr.dismissComplete = ^(BOOL deleteVideo) {
-                if (deleteVideo) {
-                    // 删除视频
-                    [weakSelf hiddenPlayViewAnimationViewRadius:radius delete:YES];
-                    [weakSelf updateDownloadUI];
-                }else {
-                    // 关闭视频页面
-                    [weakSelf hiddenPlayViewAnimationViewRadius:radius delete:NO];
-                }
-            };
-        }];
+        [self presentPlayController:nil playVedio:YES];
         
         // 其他额外需求
         if (weakSelf.playBlock) {
@@ -183,9 +168,58 @@
         }
     };
     
-    scroll.contentSize = CGSizeMake(ScWidth, CGRectGetMaxY(downloadView.frame));
+    // 创建上传文件视图
+    self.uploadView = [[HYUploadView alloc]initWithY:CGRectGetMaxY(downloadView.frame) + 10.0];
+    self.uploadView.uploadImageBlock = ^(HYUploadImageModel * _Nonnull imageModel) {
+        if (weakSelf.uploadImageBlock) {
+            weakSelf.uploadImageBlock(imageModel);
+        }
+    };
+    self.uploadView.checkUploadedImage = ^(NSString * _Nonnull imageUrl, UIImageView * _Nonnull imageView) {
+        // 显示查看图片控制器
+        [weakSelf presentPlayController:imageView playVedio:NO];
+    };
+
+    [scroll addSubview:self.uploadView];
+    
+    // m3u8视频下载
+    HYButton *m3u8Btn = [[HYButton alloc]init];
+    m3u8Btn.btnY = CGRectGetMaxY(self.uploadView.frame) + padding;
+    m3u8Btn.titleText = @"m3u8视频下载";
+    [m3u8Btn addTarget:self action:@selector(toM3u8Controller) forControlEvents:UIControlEventTouchUpInside];
+    [scroll addSubview:m3u8Btn];
+    
+    scroll.contentSize = CGSizeMake(ScWidth, CGRectGetMaxY(m3u8Btn.frame) + 10.0);
 }
 
+/**
+ * 显示播放视频/查看图片控制器
+ */
+- (void)presentPlayController:(UIImageView *)originImageView playVedio:(BOOL)playVedio
+{
+    __weak typeof(self) weakSelf = self;
+    // 第一步动画 抛物线动画移动
+    CGFloat radius = 30.0;
+    [weakSelf showPlayViewAnimationViewRadius:radius playVedio:playVedio originImageView:originImageView completion:^{
+        // 第一步动画完成,开始第二步扩散圆形展示动画(使用自定义present controller转场动画做)
+        HYCheckVideoOrImageController *playVideoCtr = [[HYCheckVideoOrImageController alloc]init];
+        playVideoCtr.fromReact = CGRectMake(weakSelf.view.center.x - radius, weakSelf.view.center.y - radius, radius * 2.0, radius * 2.0);
+        playVideoCtr.modalPresentationStyle = UIModalPresentationOverCurrentContext | UIModalPresentationFullScreen;
+        [weakSelf presentViewController:playVideoCtr animated:YES completion:nil];
+        
+        // 播放视频界面消失以后动画
+        playVideoCtr.dismissComplete = ^(BOOL deleteVideo) {
+            if (deleteVideo) {
+                // 删除视频
+                [weakSelf hiddenPlayViewAnimationViewRadius:radius playVedio:playVedio originImageView:originImageView delete:YES];
+                [weakSelf updateDownloadUI];
+            }else {
+                // 关闭视频页面
+                [weakSelf hiddenPlayViewAnimationViewRadius:radius playVedio:playVedio originImageView:originImageView delete:NO];
+            }
+        };
+    }];
+}
 
 #pragma mark - lazy loading
 /**
@@ -270,6 +304,16 @@
     self.downloadView.model = model;
 }
 
+/**
+ * 更新imageModel
+ */
+- (void)setUpdatedImageModel:(HYUploadImageModel *)updatedImageModel
+{
+    _updatedImageModel = updatedImageModel;
+    
+    self.uploadView.updatedImageModel = updatedImageModel;
+}
+
 #pragma mark - event selector
 /**
  * 按钮点击事件
@@ -317,6 +361,19 @@
     }
 }
 
+/**
+ * m3u8下载按钮点击
+ */
+- (void)toM3u8Controller
+{
+    HYM3u8VedioDownloadController *ctr = [[HYM3u8VedioDownloadController alloc]init];
+    [self.navigationController pushViewController:ctr animated:YES];
+    
+    if (self.toM3u8DownloadControllerBlock) {
+        self.toM3u8DownloadControllerBlock();
+    }
+}
+
 #pragma mark - custom method
 /**
  * 动画弹出视频播放界面第一步动画效果(从播放按钮出以抛物线的动画形式到屏幕中间)
@@ -327,9 +384,11 @@
  * completion 动画结束回调
  */
 - (void)showPlayViewAnimationViewRadius:(CGFloat)animationViewRadius
+                              playVedio:(BOOL)playVedio
+                        originImageView:(UIImageView *)originImageView
                         completion:(void (^)(void))completion
 {
-    [self animationShow:YES delete:NO animationViewRadius:animationViewRadius completion:completion];
+    [self animationShow:YES playVedio:playVedio originImageView:originImageView delete:NO animationViewRadius:animationViewRadius completion:completion];
 }
 
 /**
@@ -340,33 +399,51 @@
  * endPoint 动画结束位置
  * completion 动画结束回调
  */
-- (void)hiddenPlayViewAnimationViewRadius:(CGFloat)animationViewRadius delete:(BOOL)delete
+- (void)hiddenPlayViewAnimationViewRadius:(CGFloat)animationViewRadius
+                                playVedio:(BOOL)playVedio
+                          originImageView:(UIImageView *)originImageView
+                                   delete:(BOOL)delete
 {
-    [self animationShow:NO delete:delete animationViewRadius:animationViewRadius completion:nil];
+    [self animationShow:NO playVedio:playVedio originImageView:originImageView delete:delete animationViewRadius:animationViewRadius completion:nil];
 }
 
 /**
  * 抛物线动画
  * show 展示/消失
+ * playVedio 是否是播放视频
+ * originImageView 点击的imageView
  * delete 是否是删除视频
  * animationViewRadius 半径
  * completion 动画完成
  */
 - (void)animationShow:(BOOL)show
+            playVedio:(BOOL)playVedio
+      originImageView:(UIImageView *)originImageView
                delete:(BOOL)delete
        animationViewRadius:(CGFloat)animationViewRadius
                 completion:(void (^)(void))completion
 {
-    UIButton *btn = nil;
-    for (UIView *subView in self.downloadView.subviews.firstObject.subviews) {
-        if ([subView isKindOfClass:[UIButton class]]) {
-            btn = (UIButton *)subView;
-            break;
+    CGPoint startPoint = CGPointZero;
+    CGPoint endPoint = CGPointZero;
+    CGPoint controlPoint = CGPointZero;
+    
+    if (playVedio) {
+        UIButton *btn = nil;
+        for (UIView *subView in self.downloadView.subviews.firstObject.subviews) {
+            if ([subView isKindOfClass:[UIButton class]]) {
+                btn = (UIButton *)subView;
+                break;
+            }
         }
+        CGRect startReact = [self.downloadView convertRect:btn.frame toView:self.view];
+        startPoint = CGPointMake(startReact.origin.x + startReact.size.width * 0.5, startReact.origin.y + startReact.size.height * 0.5);
+    }else {
+        CGRect rect = [self.uploadView convertRect:originImageView.frame toView:self.view];
+        UIScrollView *scroll = (UIScrollView *)self.uploadView.subviews.firstObject;
+        startPoint = CGPointMake(rect.origin.x + rect.size.width * 0.5 - scroll.contentOffset.x, rect.origin.y + rect.size.height * 0.5);
     }
-    CGRect startReact = [self.downloadView convertRect:btn.frame toView:self.view];
-    CGPoint startPoint = CGPointMake(startReact.origin.x + startReact.size.width * 0.5, startReact.origin.y + startReact.size.height * 0.5);
-    CGPoint endPoint = self.view.center;
+    
+    endPoint = self.view.center;
     if (!show) {
         CGPoint tempPoint = startPoint;
         startPoint = endPoint;
@@ -375,6 +452,15 @@
     
     if (delete) {
         endPoint = CGPointMake(-100, endPoint.y);
+    }
+    
+    if (playVedio) {
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        controlPoint = CGPointMake(screenSize.width - 50,screenSize.height * 0.2 + (startPoint.y - endPoint.y) * 0.5 + 150);
+    }else {
+        CGFloat minX = MIN(startPoint.x, endPoint.x);
+        CGFloat minY = MIN(startPoint.y, endPoint.y);
+        controlPoint = CGPointMake(minX + fabsf(startPoint.x - endPoint.x) * 0.5, minY + fabsf(startPoint.y - endPoint.y) * 0.5);
     }
     
     // 创建shapeLayer
@@ -389,8 +475,7 @@
     // 创建移动轨迹
     UIBezierPath *movePath = [UIBezierPath bezierPath];
     [movePath moveToPoint:startPoint];
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    [movePath addQuadCurveToPoint:endPoint controlPoint:CGPointMake(screenSize.width - 50,screenSize.height * 0.2 + (startPoint.y - endPoint.y) * 0.5 + 150)];
+    [movePath addQuadCurveToPoint:endPoint controlPoint:controlPoint];
     
     // 轨迹动画
     CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -424,6 +509,24 @@
             completion();
         }
     });
+}
+
+/**
+ * 上传照片更新进度
+ * progress 上传进度
+ * index 上传任务index
+ */
+- (void)uploadProgressChanged:(CGFloat)progress imageIndex:(NSInteger)index
+{
+    if (self.uploadView.uploadProgressBlock) {
+        self.uploadView.uploadProgressBlock(progress, index);
+    }
+}
+
+- (void)dealloc
+{
+    // 销毁计时器 否侧影响持有计时器的对象销毁
+    [self.uploadView destroyTimer];
 }
 
 @end

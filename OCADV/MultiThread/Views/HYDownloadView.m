@@ -53,7 +53,7 @@
     // 背景视图
     CGFloat padding = 5.0;
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    bgView.backgroundColor = ColorWithRGBA(0.0, 191.0, 255.0, 1.0);
+    bgView.backgroundColor = ColorMain;
     bgView.layer.cornerRadius = 8;
     [self addSubview:bgView];
     
@@ -182,7 +182,6 @@
         self.downloadPercentLabel.text = percent;
     }
     self.progressView.progress = model.downloadProgress;
-
 }
 
 - (void)setState:(fileState)state

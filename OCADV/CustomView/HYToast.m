@@ -52,7 +52,9 @@
 + (void)toastWithMessage:(NSString *)message
 {
     HYToast *toast = [HYToast shareToast];
-    [toast.toastMessages addObject:message];
+    if (message) {
+        [toast.toastMessages addObject:message];
+    }
     
     // 添加toast到当前控制器的view上
     if (toast.superview == nil) {
@@ -206,7 +208,9 @@
         // 重置时间
         self.currentDate = 0;
         // 移除展示过的消息
-        [self.toastMessages removeObjectAtIndex:0];
+        if (self.toastMessages.count > 0) {
+            [self.toastMessages removeObjectAtIndex:0];
+        }
         
         // 判断消息队列里还有没有消息，如果有更换toast显示文字,如果没有toast消失
         if (self.toastMessages.count > 0) {

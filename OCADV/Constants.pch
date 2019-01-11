@@ -9,6 +9,7 @@
 #ifndef Constants_pch
 #define Constants_pch
 
+ #ifdef __OBJC__
 #import "AppDelegate.h"
 #import "HYTableViewBaseController.h"
 #import "Constants.h"
@@ -28,5 +29,7 @@
 #import "HYToast.h"
 #import "HYMoviesResolver.h"
 #import "HYDownloadView.h"
+#import "HYUploadImageModel.h"
+#endif
 
 #endif /* Constants_pch */

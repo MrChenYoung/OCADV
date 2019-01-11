@@ -59,6 +59,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)updateDownloadUI;
 
+// 更新后的imageModel
+@property (nonatomic, weak) HYUploadImageModel *updatedImageModel;
+
+// 上传照片回调
+@property (nonatomic, copy) void (^uploadImageBlock)(HYUploadImageModel *imageModel);
+
+// m3u8视频下载回调
+@property (nonatomic, copy) void (^toM3u8DownloadControllerBlock)(void);
+
+/**
+ * 上传照片更新进度
+ * progress 上传进度
+ * index 上传任务index
+ */
+- (void)uploadProgressChanged:(CGFloat)progress imageIndex:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

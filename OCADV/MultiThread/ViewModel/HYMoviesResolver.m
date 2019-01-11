@@ -16,6 +16,9 @@
 // 网络请求篇下载文件的存储路径
 @property (nonatomic, copy, readwrite) NSString *netDownloadFileSavePath;
 
+// 开始创建m3u8文件model时候的时间戳(作为第一个m3u8文件的保存文件夹名,后面文件名字在此基础上累加)
+@property (nonatomic, assign, readwrite) NSTimeInterval m3u8TimeInterval;
+
 @end
 
 @implementation HYMoviesResolver
@@ -65,6 +68,15 @@
     }
 
     self.movies = [resultArray copy];
+}
+
+#pragma mark - getter
+/**
+ * 开始创建m3u8文件model时候的时间戳(作为第一个m3u8文件的保存文件夹名,后面文件名字在此基础上累加)
+ */
+- (NSTimeInterval)m3u8TimeInterval
+{
+    return [[NSDate date] timeIntervalSince1970];
 }
 
 @end
