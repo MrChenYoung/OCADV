@@ -31,6 +31,11 @@
 - (void)backGroundColorGraded:(NSArray <UIColor *>*)colors fromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint;
 
 /**
+ * 获取指定位置的颜色
+ */
+- (UIColor *)colorOfPoint:(CGPoint)point;
+
+/**
  * 获取当前View的控制器对象
  */
 -(UIViewController *)getCurrentViewController;

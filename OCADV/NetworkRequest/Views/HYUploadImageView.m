@@ -16,6 +16,12 @@
 // 图片索引标识label
 @property (nonatomic, strong) UILabel *imageIndexLabel;
 
+// 图片大小label
+@property (nonatomic, strong) UILabel *imageSizeLabel;
+
+// 图片上传时间label
+@property (nonatomic, strong) UILabel *uploadDateLabel;
+
 // 计时器
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -66,21 +72,46 @@
     // 图片
     self.image = model.image;
     
+    // 图片大小
+    self.imageSizeLabel.text = model.imageLengthFormate;
+
     // 图片索引
     self.imageIndexLabel.text = [NSString stringWithFormat:@"%lu",model.imageIndex];
+    
+    // 进度更新
+    [self updateProgressViewPersent:model.progress];
     
     // 图片上传状态
     switch (model.status) {
         case uploadStatusUnload:
             // 未上传
+            [self removeProgressView];
             [self startAlphaLightAnimation];
             self.checkImageView.hidden = YES;
+            self.uploadDateLabel.hidden = NO;
+            self.uploadDateLabel.text = @"未上传";
             break;
-        case uploadStatusLoad:
-            // 上传过
+        case uploadStatusUploading:
+            // 正在上传
+            [self addProgressView];
             [self stopAlphaLightAnimation];
+            self.checkImageView.hidden = YES;
+            self.uploadDateLabel.hidden = YES;
+            break;
+        case uploadStatusLoad:{
+            // 上传过
             [self removeProgressView];
+            [self stopAlphaLightAnimation];
             self.checkImageView.hidden = NO;
+            self.uploadDateLabel.hidden = NO;
+            
+            // 上传时间
+            NSString *uploadDate = [model.uploadDate stringByAppendingString:@"上传"];
+            CGFloat heigth = [uploadDate sizeWithFont:self.uploadDateLabel.font maxSize:CGSizeMake(self.bounds.size.width, 10000)].height;
+            self.uploadDateLabel.viewHeight = heigth;
+            self.uploadDateLabel.viewY = self.bounds.size.height - heigth - 5.0;
+            self.uploadDateLabel.text = uploadDate;;
+        }
             break;
         default:
             break;
@@ -100,8 +131,9 @@
     _uploadBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     _uploadBtn.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
     [_uploadBtn setBackgroundImage:[UIImage imageNamed:@"upload"] forState:UIControlStateNormal];
-    [_uploadBtn addTarget:self action:@selector(tapImage:) forControlEvents:UIControlEventTouchUpInside];
+    [_uploadBtn addTarget:self action:@selector(uploadBtnClick) forControlEvents:UIControlEventTouchUpInside];
     _uploadBtn.alpha = 0.0;
+    _uploadBtn.userInteractionEnabled = NO;
     [self addSubview:_uploadBtn];
     
     // 创建图片索引标识label
@@ -114,6 +146,18 @@
     self.imageIndexLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.imageIndexLabel];
     
+    // 创建图片大小显示label
+    CGFloat imageSizeLabelX = CGRectGetMaxX(self.imageIndexLabel.frame);
+    CGFloat imageSizeLabelW = self.bounds.size.width - imageSizeLabelX - 5.0;
+    CGFloat imageSizeLabelH = CGRectGetHeight(self.imageIndexLabel.frame);
+    CGFloat imageSizeLabelY = CGRectGetMinY(self.imageIndexLabel.frame);
+    self.imageSizeLabel = [[UILabel alloc]initWithFrame:CGRectMake(imageSizeLabelX, imageSizeLabelY, imageSizeLabelW, imageSizeLabelH)];
+    self.imageSizeLabel.backgroundColor = [UIColor clearColor];
+    self.imageSizeLabel.textColor = [UIColor whiteColor];
+    self.imageSizeLabel.font = [UIFont systemFontOfSize:12.0];
+    self.imageSizeLabel.textAlignment = NSTextAlignmentRight;
+    [self addSubview:self.imageSizeLabel];
+    
     // 查看图标
     CGSize size = self.bounds.size;
     CGFloat checkImgW = 20.0;
@@ -123,6 +167,17 @@
     self.checkImageView.image = [UIImage imageNamed:@"check"];
     self.checkImageView.hidden = YES;
     [self addSubview:self.checkImageView];
+    
+    // 上传时间
+    CGFloat uploadDateLabelH = 20.0;
+    CGFloat uploadDateLabelY = self.bounds.size.height - uploadDateLabelH - 5.0;
+    self.uploadDateLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, uploadDateLabelY, self.bounds.size.width, uploadDateLabelH)];
+    self.uploadDateLabel.numberOfLines = 0;
+    self.uploadDateLabel.backgroundColor = [UIColor clearColor];
+    self.uploadDateLabel.textColor = [UIColor whiteColor];
+    self.uploadDateLabel.font = [UIFont systemFontOfSize:12.0];
+    self.uploadDateLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.uploadDateLabel];
     
     // 图片添加点击手势
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapImage:)];
@@ -140,15 +195,15 @@
 - (void)startAlphaLightAnimation
 {
     if (!self.animationOpen) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 开启动画
-            self.animationTime = 0;
-            [self addAlphaLightAnimation];
-            
-            // 开启计时器
-            [self.timer setFireDate:[NSDate distantPast]];
-            self.animationOpen = YES;
-        });
+        // 开启动画
+        self.animationTime = 0;
+        [self addAlphaLightAnimation];
+        
+        // 开启计时器
+        [self.timer setFireDate:[NSDate distantPast]];
+        self.animationOpen = YES;
+        
+        self.uploadBtn.userInteractionEnabled = NO;
     }
 }
 
@@ -235,9 +290,11 @@
  */
 - (void)addProgressView
 {
-    [self addSubview:_progressLabel];
-    [self.layer addSublayer:_progressBgLayer];
-    [self.layer addSublayer:_progressLayer];
+    if (!_progressLabel.superview) {
+        [self addSubview:_progressLabel];
+        [self.layer addSublayer:_progressBgLayer];
+        [self.layer addSublayer:_progressLayer];
+    }
 }
 
 /**
@@ -245,9 +302,11 @@
  */
 - (void)removeProgressView
 {
-    [_progressBgLayer removeFromSuperlayer];
-    [_progressLayer removeFromSuperlayer];
-    [_progressLabel removeFromSuperview];
+    if (_progressLabel.superview) {
+        [_progressBgLayer removeFromSuperlayer];
+        [_progressLayer removeFromSuperlayer];
+        [_progressLabel removeFromSuperview];
+    }
 }
 
 /**
@@ -341,9 +400,9 @@
     if (self.model.status == uploadStatusLoad) {
         // 照片已经上传过 查看照片
         if (self.checkUploadedImage) {
-            self.checkUploadedImage(self.model.remoteUrl);
+            self.checkUploadedImage(self.model);
         }
-    }else {
+    }else if(self.model.status == uploadStatusUnload) {
         // 照片未上传过
         if (self.animationOpen) {
             // 停止动画
@@ -354,24 +413,31 @@
             
             // 显示上传按钮
             self.uploadBtn.alpha = 1.0;
+            self.uploadBtn.userInteractionEnabled = YES;
         }else {
             // 动画处于关闭状态,点击图片不做响应,点击上传按钮 开始上传图片
-            if ([sender isKindOfClass:[UIButton class]]) {
-                // 停止呼吸灯动画
-                self.animationOpen = YES;
-                [self stopAlphaLightAnimation];
-                
-                // 隐藏上传按钮
-                self.uploadBtn.alpha = 0.0;
-                
-                // 上传照片
-                [self addProgressView];
-                
-                if (self.startUploadImageBlock) {
-                    self.startUploadImageBlock();
-                }
-            }
+            
         }
+    }
+}
+
+/**
+ * 上传按钮点击
+ */
+- (void)uploadBtnClick
+{
+    // 停止呼吸灯动画
+    self.animationOpen = YES;
+    [self stopAlphaLightAnimation];
+    
+    // 隐藏上传按钮
+    self.uploadBtn.alpha = 0.0;
+    
+    // 上传照片
+    [self addProgressView];
+    
+    if (self.startUploadImageBlock) {
+        self.startUploadImageBlock();
     }
 }
 

@@ -27,18 +27,26 @@
 #define ColorWithRGB(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
 #define ColorMain [UIColor colorWithRed:0/255.0 green:150/255.0 blue:255/255.0 alpha:1]
 #define ColorLightGray [UIColor colorWithRed:195.0/255.0 green:195.0/255.0 blue:195.0/255.0 alpha:1]
-
+#define ColorGrayBg [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1]
+#define ColorDefaultText ColorWithRGB(51.0,51.0,51.0)
 // 字体
 #define FontNomal [UIFont systemFontOfSize:14]
 
-// cell标题和描述定义
+// 常用宏
 #define CELLTITLE @"title"
 #define CELLDESCRIPTION @"description"
 #define CONTROLLERNAME @"controllername"
+#define KACCESSTOKENKEY @"accessToken"
+// 从相册加载图片失败
+#define KLOADIMAGECOMPLETE @"loadImageComplete"
 
-// 服务端ip和端口号
-#define SERVERIP @"10.226.104.241"
-//#define SERVERIP @"192.168.0.103"
-#define SERVERPORT 6969
+// 微信公众号信息
+// 微信公众号账号信息
+#define AppId @"wx1edac1543aa52bc9"
+#define AppSecret @"57c757a41f1f0ffc8c77af8eafb57fc3"
+
+// 微信小程序账号信息
+//#define AppId @"wxdda428dee0e87a3b"
+//#define AppSecret @"f157a773b25bebc8f11b637b3d8cbf1f"
 
 #endif /* Constants_h */

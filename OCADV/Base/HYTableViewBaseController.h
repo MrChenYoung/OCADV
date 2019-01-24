@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HYTableViewBaseController : UIViewController
+@interface HYTableViewBaseController : HYBaseViewController
 
 // 数据
 @property (nonatomic, strong) NSArray *data;

@@ -11,17 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, fileState){
-    fileStateUnDwonload = 1, // 未下载
-    fileStateDownloading,// 正在下载
-    fileStatePause,      // 暂停下载
-    fileStateDownloaded, // 下载完成
-};
-
 @interface HYDownloadView : UIView
-
-// 状态
-@property (nonatomic, assign) fileState state;
 
 // 数据模型
 @property (nonatomic, strong) HYDownloadFileModel *model;

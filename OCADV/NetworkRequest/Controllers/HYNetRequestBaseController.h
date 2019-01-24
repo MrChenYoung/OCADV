@@ -12,9 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HYNetRequestBaseController : UIViewController
 
-// 结果展示
-@property (nonatomic, copy) NSString *requestResult;
-
+#pragma mark - GET POST请求基本使用
 // 同步GET请求点击回调
 @property (nonatomic, copy) void (^syncGetRequestBlock)(NSString *phoneNumber);
 
@@ -27,53 +25,47 @@ NS_ASSUME_NONNULL_BEGIN
 // 异步POST请求点击回调
 @property (nonatomic, copy) void (^asyncPostRequestBlock)(NSString *phoneNumber);
 
+/**
+ * 手机号归属地请求结果处理
+ */
+- (void)phoneNumberLocationAnalysis:(NSString *)result;
+
+#pragma mark - 下载文件
+// 下载文件model
+@property (nonatomic, weak) HYDownloadFileModel *downloadFileModel;
+
 // 开始下载回调
-@property (nonatomic, copy) void (^downloadStartBlock)(NSString *downloadUrl,NSString *savePath);
+@property (nonatomic, copy) void (^downloadStartBlock)(HYDownloadFileModel *model);
 
 // 暂定下载回调
-@property (nonatomic, copy) void (^downloadPauseBlock)(NSString *url);
+@property (nonatomic, copy) void (^downloadPauseBlock)(HYDownloadFileModel *model);
 
 // 继续下载回调
-@property (nonatomic, copy) void (^downloadResumeBlock)(NSString *url);
+@property (nonatomic, copy) void (^downloadResumeBlock)(HYDownloadFileModel *model);
 
 // 播放回调
 @property (nonatomic, copy) void (^playBlock)(void);
 
-// 下载进度
-@property (nonatomic, assign) double downloadProgress;
-
-// 下载状态改变
-@property (nonatomic, assign) fileState downloadState;
-
-// 设置下载文件名
-@property (nonatomic, copy) NSString *downloadFileName;
-
-// 更新下载文件总大小
-@property (nonatomic, assign) long long downloadFileTotalSize;
-
-// 更新下载文件已经下载的大小
-@property (nonatomic, assign) long long downloadFileSaveSize;
-
-/**
- * 通过读取本地下载的文件的大小更新下载界面
- */
-- (void)updateDownloadUI;
-
-// 更新后的imageModel
-@property (nonatomic, weak) HYUploadImageModel *updatedImageModel;
-
-// 上传照片回调
-@property (nonatomic, copy) void (^uploadImageBlock)(HYUploadImageModel *imageModel);
-
 // m3u8视频下载回调
 @property (nonatomic, copy) void (^toM3u8DownloadControllerBlock)(void);
 
+#pragma mark - 图片上传
+// 更新后的imageModel
+@property (nonatomic, weak) HYUploadImageModel *uploadImageModel;
+
+// 刷新accessToken回调
+@property (nonatomic, copy) void (^requestAccessTokenBlock)(NSString *urlString, NSDictionary *parameters, void (^success)(NSData *response), void (^faile)(void));
+
+// 上传图片到服务器回调
+@property (nonatomic, copy) void (^uploadImageBlock)(NSString *urlString,NSDictionary *parameters,NSData *imageData,void (^success)(NSString *response), void (^faile)(void), void (^progress)(double progress),void (^finish)(NSString *responseContent));
+
+// 获取素材列表
+@property (nonatomic, copy) void (^loadImageListBlock)(NSString *urlString,NSDictionary *parameters,void (^requestSuccess)(NSData *));
+
 /**
- * 上传照片更新进度
- * progress 上传进度
- * index 上传任务index
+ * 压缩要上传的图片 压缩到500kb
  */
-- (void)uploadProgressChanged:(CGFloat)progress imageIndex:(NSInteger)index;
+- (void)compressImageComplete:(void (^)(void))complete;
 
 @end
 

@@ -7,27 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HYUploadImageView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HYUploadView : UIView
-// 上传照片回调
-@property (nonatomic, copy) void (^uploadImageBlock)(HYUploadImageModel *imageModel);
-
-// 上传进度改变回调
-@property (nonatomic, copy) void (^uploadProgressBlock)(CGFloat progress,NSInteger imageIndex);
 
 // 更新后的imageModel
 @property (nonatomic, weak) HYUploadImageModel *updatedImageModel;
 
+// 所有的imageView
+@property (nonatomic, strong, readonly) NSMutableArray <HYUploadImageView *>*imageViewListArray;
+
+// 上传照片回调
+@property (nonatomic, copy) void (^uploadImageBlock)(HYUploadImageModel *imageModel);
+
 // 查看上传过的图片
-@property (nonatomic, copy) void(^checkUploadedImage)(NSString *imageUrl,UIImageView *imageView);
+@property (nonatomic, copy) void(^checkUploadedImage)(HYUploadImageModel *imageModel,UIImageView *imageView);
 
 /**
  * 初始化
  */
 - (instancetype)initWithY:(CGFloat)y;
 
+/**
+ * 销毁用到的timer 否则影响内存释放
+ */
 - (void)destroyTimer;
 
 @end

@@ -17,15 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^startUploadImageBlock)(void);
 
 // 查看上传过的图片
-@property (nonatomic, copy) void(^checkUploadedImage)(NSString *imageUrl);
+@property (nonatomic, copy) void(^checkUploadedImage)(HYUploadImageModel *imageModel);
 
 // 数据模型
 @property (nonatomic, strong) HYUploadImageModel *model;
-
-/**
- * 根据百分比更新进度条进度
- */
-- (void)updateProgressViewPersent:(double)persent;
 
 /**
  * 销毁计时器 在控制器销毁的时候销毁计时器,否侧影响当前类实例对象的销毁

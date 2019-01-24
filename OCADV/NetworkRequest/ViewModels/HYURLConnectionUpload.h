@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface HYURLConnectionUpload : NSObject
 
@@ -22,6 +23,7 @@
  * fileName文件名
  * fileContentType 上传文件类型(默认为image/png,图片类型)
  * header 请求头信息
+ * params 上传需要的额外参数
  * fileData 上传文件的二进制数据
  * success 请求成功回调
  * faile 请求失败回调
@@ -33,10 +35,11 @@
           fileName:(NSString *)fileName
        contentType:(NSString *)fileContentType
             header:(NSDictionary *)header
+            params:(NSDictionary *)params
           fileData:(NSData *)fileData
            success:(void (^)(NSString *response))success
              faile:(void (^)(NSError *error, NSString *errorMessage))faile
           progress:(void (^)(CGFloat progress))progressBlock
-            finish:(void (^)(void))finish;
+            finish:(void (^)(NSString *responseContent))finish;
 
 @end

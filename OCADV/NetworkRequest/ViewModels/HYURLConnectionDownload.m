@@ -196,7 +196,7 @@ typedef void (^downloadCompleteBlock)(void);
 // 收到回复
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    NSMutableDictionary *dicM = [self.downloadTasks objectForKey:response.URL.absoluteString];
+    NSMutableDictionary *dicM = [self.downloadTasks objectForKey:connection.currentRequest.URL.absoluteString];
     
     // 根据返回的状态码确定请求是否成功
     NSHTTPURLResponse *res = (NSHTTPURLResponse *)response;
@@ -268,7 +268,7 @@ typedef void (^downloadCompleteBlock)(void);
         }
     }
     
-    [self.downloadTasks setObject:dicM forKey:response.URL.absoluteString];
+    [self.downloadTasks setObject:dicM forKey:connection.currentRequest.URL.absoluteString];
 }
 
 // 接收到数据 多次调用

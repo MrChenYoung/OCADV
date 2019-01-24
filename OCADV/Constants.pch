@@ -11,25 +11,34 @@
 
  #ifdef __OBJC__
 #import "AppDelegate.h"
+#import "HYBaseViewController.h"
 #import "HYTableViewBaseController.h"
 #import "Constants.h"
 #import <ReactiveObjC.h>
 #import "HYAlertUtil.h"
 #import "ControllerUtil.h"
 #import "UIView+Category.h"
+#import "NSString+Category.h"
+#import "UIColor+Category.h"
+#import "UIImage+Category.h"
 #import "HYButton.h"
 #import <UITextView+ZWPlaceHolder.h>
 #import "HYTableViewCell.h"
 #import <GCDAsyncSocket.h>
 #import "HYSocketClientModel.h"
 #import "IPUtil.h"
+#import "HYAVUtil.h"
 #import "APIMacro.h"
 #import <SVProgressHUD.h>
 #import "NSData+Category.h"
+#import "NSDate+Category.h"
 #import "HYToast.h"
-#import "HYMoviesResolver.h"
+#import "HYGeneralSingleTon.h"
 #import "HYDownloadView.h"
 #import "HYUploadImageModel.h"
+#import "HYServerImageModel.h"
+#import "HYURLConnectionUtil.h"
+
 #endif
 
 #endif /* Constants_pch */

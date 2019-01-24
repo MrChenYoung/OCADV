@@ -8,7 +8,6 @@
 
 #import "HYUploadView.h"
 #import "HYPhotoAlbumManager.h"
-#import "HYUploadImageView.h"
 
 #define MarginWidth 10.0
 #define Height 150.0
@@ -21,12 +20,19 @@
 // 图片数组
 @property (nonatomic, strong) NSMutableArray *imagesArray;
 
+// 所有的imageView
+@property (nonatomic, strong, readwrite) NSMutableArray <HYUploadImageView *>*imageViewListArray;
+
+// 所有的imageView
+//@property (nonatomic, strong, readwrite) NSMutableArray *imageViewListArray;
+
 // 记录最后一张图片的maxX值 为了计算下一张图片的x
 @property (nonatomic, assign) CGFloat lastImageViewMaxX;
 
 @end
 
 @implementation HYUploadView
+@synthesize updatedImageModel = _updatedImageModel;
 
 /**
  * 初始化
@@ -44,16 +50,14 @@
         
         // 加载相册照片
         __weak typeof(self) weakSelf = self;
+        [SVProgressHUD showWithStatus:@"加载照片中..."];
         [self loadAlbumImages:^(HYUploadImageModel *imageModel) {
             // 获取到一张照片调用一次
             [weakSelf createImageView:imageModel];
+        } complete:^{
+            // 所有图片加载完成回调 发送通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:KLOADIMAGECOMPLETE object:nil];
         }];
-        
-        // 更新进度条
-        self.uploadProgressBlock = ^(CGFloat progress, NSInteger imageIndex) {
-            HYUploadImageView *imageView = [weakSelf.scrollView viewWithTag:imageIndex];
-            [imageView updateProgressViewPersent:progress];
-        };
     }
     return self;
 }
@@ -63,9 +67,30 @@
  * 更新后的imageModel
  */
 - (void)setUpdatedImageModel:(HYUploadImageModel *)updatedImageModel
-{    
+{
+    _updatedImageModel = updatedImageModel;
+    
     HYUploadImageView *imageView = [self.scrollView viewWithTag:updatedImageModel.imageIndex];
     imageView.model = updatedImageModel;
+}
+
+/**
+ * 获取所有的imageView
+ */
+- (NSMutableArray<HYUploadImageModel *> *)imageViewListArray
+{
+    if (_imagesArray == nil) {
+        _imagesArray = [NSMutableArray array];
+    }
+    
+    [_imagesArray removeAllObjects];
+    for (UIView *subView in self.scrollView.subviews) {
+        if ([subView isKindOfClass:[HYUploadImageView class]]) {
+            [_imagesArray addObject:subView];
+        }
+    }
+    
+    return _imagesArray;
 }
 
 #pragma mark - create subviews
@@ -109,9 +134,9 @@
         }
     };
     __weak typeof(HYUploadImageView *) weakImageView = imageView;
-    imageView.checkUploadedImage = ^(NSString * _Nonnull imageUrl) {
+    imageView.checkUploadedImage = ^(HYUploadImageModel * _Nonnull imageModel) {
         if (self.checkUploadedImage) {
-            self.checkUploadedImage(imageUrl,weakImageView);
+            self.checkUploadedImage(imageModel,weakImageView);
         }
     };
     imageView.tag = imageIndex;
@@ -140,19 +165,33 @@
 
 #pragma mark - load album photos
 // 读取相册照片 异步读取
-- (void)loadAlbumImages:(void (^)(HYUploadImageModel *imageModel))result
+- (void)loadAlbumImages:(void (^)(HYUploadImageModel *imageModel))loadResult complete:(void (^)(void))complete
 {
-    HYPhotoAlbumManager *photoManager = [HYPhotoAlbumManager shareManager];
-    [photoManager getAllPhotosBlock:^(ALAsset *assert) {
-        UIImage *image = [photoManager fullScreenImageWithAssert:assert];
-        NSString *imageName = [photoManager imageNameWithAssert:assert];
-        HYUploadImageModel *model = [[HYUploadImageModel alloc]init];
-        model.image = image;
-        model.imageName = imageName;
-        if (result) {
-            result(model);
-        }
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        HYPhotoAlbumManager *photoManager = [HYPhotoAlbumManager shareManager];
+        [photoManager getAllPhototsComplete:^(NSArray<PHAsset *> *result) {
+            for (PHAsset *asset in result) {
+                UIImage *image = [photoManager imageWithAssert:asset synchronous:YES original:YES complete:nil];
+                NSString *imageName = [photoManager imageNameWithPHAssert:asset];
+                HYUploadImageModel *model = [[HYUploadImageModel alloc]init];
+                model.image = image;
+                model.imageName = imageName;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (loadResult) {
+                        loadResult(model);
+                    }
+                });
+            }
+            
+            // 加载图片完成回调
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (complete) {
+                    complete();
+                }
+            });
+        }];
+    });
 }
 
 

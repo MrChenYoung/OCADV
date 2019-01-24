@@ -7,11 +7,11 @@
 //
 
 #import "HYURLConnectionController.h"
-#import "HYURLConnectionUtil.h"
 #import "HYURLConnectionDownload.h"
 #import "HYURLConnectionUpload.h"
 #import "HYAFNRequestUtil.h"
-#import "HYCheckVideoOrImageController.h"
+#import "HYCheckImageURLConnectionController.h"
+#import <AFNetworking.h>
 
 @interface HYURLConnectionController ()<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
@@ -37,7 +37,7 @@
         NSData *result = [HYURLConnectionUtil syncGET:checkPhoneNumberUrl headers:nil parameters:parameters];
         NSString *str = [result toString];
         if (str) {
-            weakSelf.requestResult = str;
+            [weakSelf phoneNumberLocationAnalysis:str];
         }else {
             [HYToast toastWithMessage:@"网络错误,请检查网络是否正常连接."];
         }
@@ -49,7 +49,7 @@
         NSData *result = [HYURLConnectionUtil syncPOST:checkPhoneNumberUrl headers:nil parameters:parameters];
         NSString *str = [result toString];
         if (str) {
-            weakSelf.requestResult = str;
+            [weakSelf phoneNumberLocationAnalysis:str];
         }else {
             [HYToast toastWithMessage:@"网络错误,请检查网络是否正常连接."];
         }
@@ -66,112 +66,143 @@
         } success:^(NSData * _Nonnull result, NSURLResponse * _Nonnull response) {
             // 显示结果到界面上
             NSString *str = [result toString];
-            weakSelf.requestResult = str;
+            [weakSelf phoneNumberLocationAnalysis:str];
         } faile:^(NSURLResponse * _Nonnull response, NSData * _Nonnull result, NSError * _Nonnull error) {
             [HYToast toastWithMessage:@"网络错误,请检查网络是否正常连接."];
         }];
-        
-//        NSString *url = @"http://testapi.babatruck.com/app/account/SignIn";
-//        NSDictionary *body = @{@"mobileTel":@"13761943167",
-//                               @"passWord":@"123456",
-//                               @"type":@"0"};
-//        [HYURLConnectionUtil GET:url headers:nil parameters:body complete:^{
-//            [SVProgressHUD dismiss];
-//        } success:^(NSData * _Nonnull result, NSURLResponse * _Nonnull response) {
-//            NSString *str = [result toString];
-//            NSLog(@"请求成功:%@",str);
-//        } faile:^(NSURLResponse * _Nonnull response, NSData * _Nonnull result, NSError * _Nonnull error) {
-//            NSLog(@"请求失败");
-//        }];
     };
     
     // 异步POST请求
     self.asyncPostRequestBlock = ^(NSString * _Nonnull phoneNumber) {
         [SVProgressHUD show];
-        
         NSDictionary *parameters = @{@"tel":phoneNumber};
         [HYURLConnectionUtil POST:checkPhoneNumberUrl headers:nil parameters:parameters complete:^{
             [SVProgressHUD dismiss];
         } success:^(NSData * _Nonnull result, NSURLResponse * _Nonnull response) {
             // 显示结果到界面上
             NSString *str = [result toString];
-            weakSelf.requestResult = str;
+            [weakSelf phoneNumberLocationAnalysis:str];
         } faile:^(NSURLResponse * _Nonnull response, NSData * _Nonnull result, NSError * _Nonnull error) {
             [HYToast toastWithMessage:@"网络错误,请检查网络是否正常连接."];
         }];
-        
     };
     
     // 开始下载回调
-    self.downloadStartBlock = ^(NSString * _Nonnull downloadUrl, NSString * _Nonnull savePath) {
-        [weakSelf.urlConnection downloadFile:downloadUrl savePath:[HYMoviesResolver share].netDownloadFileSavePath didReceiveResponse:^(long long totalSize, NSString * _Nonnull fileName) {
+    self.downloadStartBlock = ^(HYDownloadFileModel * _Nonnull model) {
+        [weakSelf.urlConnection downloadFile:model.downloadUrl savePath:model.savePath didReceiveResponse:^(long long totalSize, NSString * _Nonnull fileName) {
             // 开始下载
-            weakSelf.downloadState = fileStateDownloading;
-            weakSelf.downloadFileName = fileName;
-            weakSelf.downloadFileTotalSize = totalSize;
+            model.downloadStatus = fileDownloadStatusDownloading;
+            model.remoteName = fileName;
+            model.totalLength = totalSize;
+            weakSelf.downloadFileModel = model;
         }progressChanged:^(double progress,long long downloadLength) {
             // 下载进度改变
-            weakSelf.downloadProgress = progress;
-            weakSelf.downloadFileSaveSize = downloadLength;
+            model.downloadProgress = progress;
+            model.downloadLength = downloadLength;
+            weakSelf.downloadFileModel = model;
         }complete:^{
             // 下载完成
-            weakSelf.downloadState = fileStateDownloaded;
+            model.downloadStatus = fileDownloadStatusDownloaded;
+            weakSelf.downloadFileModel = model;
         }faile:^(NSError * _Nonnull error) {
             // 下载失败
-            weakSelf.downloadState = fileStatePause;
+            model.downloadStatus = fileDownloadStatusPause;
+            weakSelf.downloadFileModel = model;
         }];
     };
     
     // 暂停下载回调
-    self.downloadPauseBlock = ^(NSString * _Nonnull url) {
-        BOOL success = [weakSelf.urlConnection downloadPause:url];
+    self.downloadPauseBlock = ^(HYDownloadFileModel * _Nonnull model) {
+        BOOL success = [weakSelf.urlConnection downloadPause:model.downloadUrl];
         if (success) {
-            weakSelf.downloadState = fileStatePause;
+            model.downloadStatus = fileDownloadStatusPause;
+            weakSelf.downloadFileModel = model;
         }else {
             [HYAlertUtil showAlertTitle:@"提示" msg:@"没有找到下载任务" inCtr:weakSelf];
         }
     };
     
     // 继续下载回调
-    self.downloadResumeBlock = ^(NSString * _Nonnull url) {
-        BOOL success = [weakSelf.urlConnection downloadResume:url];
+    self.downloadResumeBlock = ^(HYDownloadFileModel * _Nonnull model) {
+        BOOL success = [weakSelf.urlConnection downloadResume:model.downloadUrl];
         if (success) {
-            weakSelf.downloadState = fileStateDownloading;
+            model.downloadStatus = fileDownloadStatusDownloading;
+            weakSelf.downloadFileModel = model;
         }else {
-            [HYAlertUtil showAlertTitle:@"提示" msg:@"没有找到暂停的下载任务" inCtr:weakSelf];
+            if (weakSelf.downloadStartBlock) {
+                weakSelf.downloadStartBlock(model);
+            }
         }
     };
     
     // 上传照片回调
-    self.uploadImageBlock = ^(HYUploadImageModel * _Nonnull imageModel) {
-        NSString *url = @"http://testapi.babatruck.com/app/file/Upload?folder=signpic";
-        NSData *data = UIImagePNGRepresentation(imageModel.image);
-        NSDictionary *header = @{@"Token":@"995929bf-83f7-4e79-95d5-d3d96d7de489"};
-        [[HYURLConnectionUpload share] uploadFile:url paramName:@"picture" fileName:@"20190108.png" contentType:@"image/png" header:header fileData:data success:^(NSString *response) {
-            // 请求成功 记录服务器返回的图片网络地址
-            NSData *data = [response dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSString *imageUrl = dic[@"Data"];
-            if (imageUrl.length > 0) {
-                imageModel.remoteUrl = imageUrl;
-            }
-        } faile:^(NSError *error, NSString *errorMessage) {
-            // 请求失败
-            [HYToast toastWithMessage:errorMessage];
-        } progress:^(CGFloat progress) {
-            [weakSelf uploadProgressChanged:progress imageIndex:imageModel.imageIndex];
-        } finish:^{
-            // 上传完成
-            imageModel.status = uploadStatusLoad;
-            weakSelf.updatedImageModel = imageModel;
-        }];
+    
+    // 获取token回调
+    self.requestAccessTokenBlock = ^(NSString * _Nonnull urlString, NSDictionary * _Nonnull parameters, void (^ _Nonnull success)(NSData * _Nonnull), void (^ _Nonnull faile)(void)) {
+        [weakSelf requestAccessToken:urlString parameters:parameters success:success faile:faile];
     };
     
-    // 进入m3u8视频下载页面
-    self.toM3u8DownloadControllerBlock = ^{
-        
+    // 上传图片回调
+    self.uploadImageBlock = ^(NSString * _Nonnull urlString, NSDictionary * _Nonnull parameters, NSData * _Nonnull imageData, void (^ _Nonnull success)(NSString * _Nonnull), void (^ _Nonnull faile)(void), void (^ _Nonnull progress)(double), void (^ _Nonnull finish)(NSString * _Nonnull)) {
+        [weakSelf uploadImage:urlString parameters:parameters imageData:imageData success:success faile:faile progressBlock:progress finish:finish];
+    };
+    
+    // 获取图片列表回调
+    self.loadImageListBlock = ^(NSString * _Nonnull urlString, NSDictionary * _Nonnull parameters, void (^ _Nonnull requestSuccess)(NSData * _Nonnull)) {
+        [HYURLConnectionUtil POST:urlString headers:nil parameters:parameters complete:nil success:^(NSData * _Nonnull result, NSURLResponse * _Nonnull response) {
+            if (requestSuccess) {
+                requestSuccess(result);
+            }
+        } faile:^(NSURLResponse * _Nonnull response, NSData * _Nonnull result, NSError * _Nonnull error) {
+            NSLog(@"从服务器获取图片列表失败");
+        }];
     };
 }
+
+/**
+ * 获取token
+ */
+- (void)requestAccessToken:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(NSData *result))requestSuccess faile:(void (^)(void))faile
+{
+    [HYURLConnectionUtil GET:url headers:nil parameters:parameters complete:nil success:^(NSData * _Nonnull result, NSURLResponse * _Nonnull response) {
+        if (requestSuccess) {
+            requestSuccess(result);
+        }
+    } faile:^(NSURLResponse * _Nonnull response, NSData * _Nonnull result, NSError * _Nonnull error) {
+        if (faile) {
+            faile();
+        }
+    }];
+}
+
+/**
+ * 上传图片
+ */
+- (void)uploadImage:(NSString *)urlString parameters:(NSDictionary *)parameters imageData:(NSData *)imageData success:(void (^)(NSString *result))success faile:(void (^)(void))faile progressBlock:(void (^)(double progress))progressBlock finish:(void (^)(NSString *responseStr))finish
+{
+    [[HYURLConnectionUpload share] uploadFile:urlString paramName:@"media" fileName:self.uploadImageModel.imageName contentType:@"image/*" header:nil params:parameters fileData:imageData success:^(NSString *response) {
+        // 上传成功
+        if (success) {
+            success(response);
+        }
+    } faile:^(NSError *error, NSString *errorMessage) {
+        // 上传失败
+        if (faile) {
+            faile();
+        }
+    } progress:^(CGFloat progress) {
+        // 上传进度改变
+        if (progressBlock) {
+            progressBlock(progress);
+        }
+    } finish:^(NSString *responseContent){
+        // 上传完成
+        if (finish) {
+            finish(responseContent);
+        }
+    }];
+}
+
 
 
 - (void)testRequest

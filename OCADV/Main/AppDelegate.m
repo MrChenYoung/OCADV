@@ -34,7 +34,8 @@
     [self.window addSubview:_bottomTextView];
     
     // 隐藏状态栏
-    [UIApplication sharedApplication].statusBarHidden = YES;
+//    [UIApplication sharedApplication].statusBarHidden = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     // 预加载必要数据
     [self preloadNecessaryData];
@@ -48,7 +49,7 @@
 - (void)preloadNecessaryData
 {
     // 加载要下载的电影信息
-    [HYMoviesResolver share];
+    [HYGeneralSingleTon share];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

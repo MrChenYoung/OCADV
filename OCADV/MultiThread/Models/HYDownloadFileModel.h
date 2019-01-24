@@ -10,13 +10,29 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, fileDownloadStatus){
+    fileDownloadStatusUnDwonload = 1, // 未下载
+    fileDownloadStatusDownloading,// 正在下载
+    fileDownloadStatusPause,      // 暂停下载
+    fileDownloadStatusDownloaded, // 下载完成
+};
+
 @interface HYDownloadFileModel : NSObject
 
-// 文件名字
+// 文件名字(本地设置的文件名)
 @property (nonatomic, copy) NSString *name;
 
-// 下载路径
+// 文件名(下载文件时服务器返回的文件名字)
+@property (nonatomic, copy) NSString *remoteName;
+
+// 文件下载状态
+@property (nonatomic, assign) fileDownloadStatus downloadStatus;
+
+// 下载地址
 @property (nonatomic, copy) NSString *downloadUrl;
+
+// 下载文件的保存路径
+@property (nonatomic, copy) NSString *savePath;
 
 // 总时长
 @property (nonatomic, copy) NSString *totalDuration;
@@ -42,6 +58,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) double downloadProgress;
 
 + (instancetype)downloadFileWithDic:(NSDictionary *)dic;
+
+/**
+ * 根据本地文件更新下载状态
+ */
+- (void)reloadDownloadStatus;
 
 @end
 

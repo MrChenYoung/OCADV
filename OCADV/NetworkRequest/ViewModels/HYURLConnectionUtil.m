@@ -81,7 +81,7 @@
 }
 
 /**
- * 异步POST请求
+ * 同步POST请求
  * urlString 请求地址
  * headers 请求头部信息
  * parameters 请求参数
@@ -111,15 +111,15 @@
                                  headers:(NSDictionary *)headers
                               parameters:(NSDictionary *)parameters
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?",urlString];
+    NSString *urlStr = parameters.count > 0 ? [urlString stringByAppendingString:@"?"] : urlString;
     
     // 拼接参数
     for (NSString *key in parameters) {
         urlStr = [urlStr stringByAppendingFormat:@"%@=%@&",key,parameters[key]];
     }
     
-    // 创建url对象
-    NSURL *url = [NSURL URLWithString:urlStr];
+    // 创建url对象(记得url编码)
+    NSURL *url = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     // 创建请求对象
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -144,7 +144,7 @@
                          parameters:(NSDictionary *)parameters
 {
     // 创建url对象
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     // 创建请求对象
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
@@ -159,11 +159,10 @@
     [request setAllHTTPHeaderFields:headers];
     
     // 设置参数
-    NSString *par = @"";
-    for (NSString *key in parameters) {
-        par = [par stringByAppendingFormat:@"%@=%@&",key,parameters[key]];
+    if (parameters) {
+        NSData *parametersData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+        request.HTTPBody = parametersData;
     }
-    request.HTTPBody = [par dataUsingEncoding:NSUTF8StringEncoding];
     
     return request;
 }
@@ -182,7 +181,7 @@
         
         // 获取返回信息编码方式
         NSLog(@"编码方式:%@",response.textEncodingName);
-        
+    
         dispatch_async(dispatch_get_main_queue(), ^{
             if (complete) {
                 complete();

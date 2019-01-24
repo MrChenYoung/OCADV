@@ -15,6 +15,7 @@
 #define KUploadFileRequestFaileKey @"uploadFileRequestFaileKey"
 #define KUploadFileProgressChangedKey @"uploadFileProgressChanged"
 #define KUploadFileFinishKey @"uploadFileFinishKey"
+#define KUploadFileResponseContentKey @"responseContent"
 
 @interface HYURLConnectionUpload()<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
@@ -52,6 +53,7 @@
  * fileName文件名
  * fileContentType 上传文件类型(默认为image/png,图片类型)
  * header 请求头信息
+ * params 上传需要的额外参数
  * fileData 上传文件的二进制数据
  * success 请求成功回调
  * faile 请求失败回调
@@ -63,22 +65,18 @@
           fileName:(NSString *)fileName
        contentType:(NSString *)fileContentType
             header:(NSDictionary *)header
+            params:(NSDictionary *)params
           fileData:(NSData *)fileData
            success:(void (^)(NSString *response))success
              faile:(void (^)(NSError *error, NSString *errorMessage))faile
           progress:(void (^)(CGFloat progress))progressBlock
-            finish:(void (^)(void))finish
+            finish:(void (^)(NSString *responseContent))finish
 {
     // 取出当前上传任务信息
     NSDictionary *dic = self.uploadTasks[urlString];
     if (!dic) {
         dic = [NSMutableDictionary dictionary];
     }
-    
-    
-    // 请求体里的分割符和换行符
-    NSString *boundry = @"----WebKitFormBoundaryhBDKBUWBHnAgvz9c";
-    NSData *newLine = [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding];
     
     // 请求url
     NSURL *url = [NSURL URLWithString:urlString];
@@ -96,61 +94,56 @@
     // 设置请求方式为POST
     request.HTTPMethod = @"POST";
     
-    // 设置请求头
-    NSString *filed = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundry];
-    [request setValue:filed forHTTPHeaderField:@"Content-Type"];
-    
     // 拼接请求体
-    /*
-     --分隔符
-     Content-Disposition:参数
-     Content-Type:参数
-     空行
-     文件参数
-     
-     //02.非文件拼接参数
-     --分隔符
-     Content-Disposition:参数
-     空行
-     非文件的二进制数据
-     
-     //03.结尾标识
-     --分隔符--
-     */
+    // 请求体里的分割符和换行符
+    NSString *boundry = @"----WebKitFormBoundaryhBDKBUWBHnAgvz9c";
+    NSData *newLine = [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *body = [NSMutableData data];
+    
+    /***************拼接文件参数***************/
+    // 文件开始分隔符
     [body appendData:[[NSString stringWithFormat:@"--%@",boundry] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:newLine];
+    // paramName 指定参数名(必须跟服务器端保持一致) fileName 文件名
     NSString *contentDisposition = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"",paramName,fileName];
     [body appendData:[contentDisposition dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:newLine];
+    // 文件类型
     if (fileContentType == nil || fileContentType.length == 0) {
         fileContentType = @"image/png";
     }
     NSString *contentType = [NSString stringWithFormat:@"Content-Type:%@",fileContentType];
     [body appendData:[contentType dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:newLine];
-    [body appendData:newLine];
-    [body appendData:newLine];
-    
     // 拼接文件内容
+    [body appendData:newLine];
     [body appendData:fileData];
     [body appendData:newLine];
     
+    /***************拼接除文件意外的参数***************/
     // 拼接非文件参数
-    [body appendData:[[NSString stringWithFormat:@"--%@",boundry] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:newLine];
-    [body appendData:[@"Content-Disposition: form-data; name=\"username\"" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:newLine];
-    [body appendData:newLine];
-    [body appendData:newLine];
+    [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        // 参数开始的标志
+        [body appendData:[[NSString stringWithFormat:@"--%@",boundry] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:newLine];
+        NSString *disposition = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key];
+        [body appendData:[disposition dataUsingEncoding:NSUTF8StringEncoding]];
+
+        [body appendData:newLine];
+        [body appendData:[obj dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:newLine];
+    }];
     
-    // 拼接非文件参数的二进制文件
-    [body appendData:[@"abc" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:newLine];
-    
-    // 结尾标识
+    /***************拼接结尾分隔符***************/
     [body appendData:[[NSString stringWithFormat:@"--%@--",boundry] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:newLine];
+    
+    /***************设置请求头***************/
+    // 告诉服务器上传文件的长度
+    [request setValue:[NSString stringWithFormat:@"%zd", body.length] forHTTPHeaderField:@"Content-Length"];
+    // 告诉服务器该请求是上传文件请求，以及分隔符
+    NSString *filed = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundry];
+    [request setValue:filed forHTTPHeaderField:@"Content-Type"];
     
     // 设置请求体
     request.HTTPBody = body;
@@ -201,12 +194,14 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     // 根据添加的标记识别是否请求成功
-    NSDictionary *dic = self.uploadTasks[connection.currentRequest.URL.absoluteString];
+    NSMutableDictionary *dic = self.uploadTasks[connection.currentRequest.URL.absoluteString];
     BOOL requestSuc = [dic[KUploadFileResultkey] boolValue];
     void (^requestSuccess)(NSString *result) = dic[KUploadFileRequestSuccessKey];
     void (^requestFaile)(NSError *error,NSString *errorMessage) = dic[KUploadFileRequestFaileKey];
     NSString *result = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-
+    [dic setObject:result ? result : @"" forKey:KUploadFileResponseContentKey];
+    [self.uploadTasks setObject:dic forKey:connection.currentRequest.URL.absoluteString];
+    
     if (requestSuc) {
         // 请求成功
         if (requestSuccess) {
@@ -248,7 +243,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSDictionary *dic = self.uploadTasks[connection.currentRequest.URL.absoluteString];
-    void (^finish)(void) = dic[KUploadFileFinishKey];
+    NSString *responseContent = dic[KUploadFileResponseContentKey];
+    void (^finish)(NSString *response) = dic[KUploadFileFinishKey];
     
     BOOL requestSuc = [dic[KUploadFileResultkey] boolValue];
     if (!requestSuc) return;
@@ -256,11 +252,9 @@
     // 上传完成回调
     dispatch_async(dispatch_get_main_queue(), ^{
         if (finish) {
-            finish();
+            finish(responseContent);
         }
     });
-    
-    NSLog(@"上传完成");
 }
 
 #pragma mark - NSURLConnectionDelegate

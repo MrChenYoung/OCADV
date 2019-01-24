@@ -28,12 +28,15 @@
     
     // 下载列表
     NSMutableArray *arrM = [NSMutableArray array];
-    NSTimeInterval timeInterval = [HYMoviesResolver share].m3u8TimeInterval;
-    for (int i = 150; i < 200; i++) {
+    NSTimeInterval timeInterval = [HYGeneralSingleTon share].m3u8TimeInterval;
+    for (int i = 0; i < 1; i++) {
 //        NSString *url = [NSString stringWithFormat:@"http://www.tszye.cn:2100/%d/500kb/hls/index.m3u8",i];
-        NSString *url = [NSString stringWithFormat:@"http://101.96.10.75/letv.com-live-ko-com-kovin.com/%d/hls/index.m3u8",i];
+//        NSString *url = [NSString stringWithFormat:@"http://101.96.10.75/letv.com-live-ko-com-kovin.com/%d/hls/index.m3u8",i];
         // 108435
 //        NSString *url = @"https://dco4urblvsasc.cloudfront.net/811/81095_ywfZjAuP/game/1000kbps.m3u8";
+//        NSString *url = @"http://45.113.200.84:2100/20190117/sTXHPPle/500kb/hls/index.m3u8";
+//        NSString *url = @"http://www.streambox.fr/playlists/test_001/stream.m3u8";
+        NSString *url = @"http://www.tszye.cn:2100/200425/500kb/hls/index.m3u8";
         HYM3u8FileModel *model = [[HYM3u8FileModel alloc]init];
         model.timeInterval = timeInterval + i;
         model.downloadUrl = url;
@@ -78,6 +81,10 @@
             NSString *tsPath = [model.tsSaveDir stringByAppendingPathComponent:tsName];
             NSData *tsData = [NSData dataWithContentsOfFile:tsPath];
             [resultData appendData:tsData];
+            
+            if (index == 2) {
+                break;
+            }
             
             double pro = (double)(index + 1)/model.tsListsArray.count;
             // 主线程更新进度

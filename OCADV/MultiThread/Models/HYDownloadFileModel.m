@@ -10,7 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface HYDownloadFileModel ()
+// 文件总大小格式化
 @property (nonatomic, copy, readwrite) NSString *totalSizeFormate;
+
+// 已经下载大小格式化
 @property (nonatomic, copy, readwrite) NSString *downloadSizeFormate;
 @end
 
@@ -30,6 +33,18 @@
         
         // 总大小
         [self getFileSize];
+        
+        // 默认视频时长
+        self.totalDuration = @"0s";
+        
+        // 默认下载大小
+        self.downloadSizeFormate = @"0KB";
+        
+        // 默认总大小
+        self.totalSizeFormate = @"0KB";
+        
+        // 更新下载状态
+        [self reloadDownloadStatus];
     }
     
     return self;
@@ -40,6 +55,20 @@
     return [[self alloc]initWithDic:dic];
 }
 
+
+#pragma mark - setter
+/**
+ * 根据名字设置存储路径
+ */
+- (void)setName:(NSString *)name
+{
+    _name = name;
+    
+    // 设置存储路径
+    NSString *documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    self.savePath = [documentDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp4",self.name]];
+}
+
 /**
  * 格式化文件总大小
  */
@@ -47,11 +76,11 @@
 {
     _totalLength = totalLength;
     
-    if (totalLength == 0) {
-        self.totalSizeFormate = @"0MB";
-    }else {
+    if (totalLength != 0) {
         NSString *totalLengthFormater = [NSByteCountFormatter stringFromByteCount:totalLength countStyle:NSByteCountFormatterCountStyleFile];
         self.totalSizeFormate = totalLengthFormater;
+    }else {
+        self.totalSizeFormate = @"0KB";
     }
 }
 
@@ -62,11 +91,42 @@
 {
     _downloadLength = downloadLength;
     
-    if (downloadLength == 0) {
-        self.downloadSizeFormate = @"0MB";
-    }else {
+    if (downloadLength != 0) {
         NSString *downloadLengthFormater = [NSByteCountFormatter stringFromByteCount:downloadLength countStyle:NSByteCountFormatterCountStyleFile];
         self.downloadSizeFormate = downloadLengthFormater;
+    }else {
+        self.downloadSizeFormate = @"0KB";
+    }
+}
+
+
+#pragma mark - custom method
+/**
+ * 根据本地文件更新下载状态
+ */
+- (void)reloadDownloadStatus
+{
+    // 根据下载存储路径从磁盘查询是否已经下载过和已经下载的大小,用于断点续传
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:self.savePath]) {
+        long long downloadLength = [[manager attributesOfItemAtPath:self.savePath error:nil] fileSize];
+        if (downloadLength > 0) {
+            // 文件已经被下载过(下载完成或下载一部分)
+            self.downloadProgress = (double)downloadLength/self.totalLength;
+            self.downloadLength = downloadLength;
+            if (self.downloadProgress == 1) {
+                // 已经下载完成
+                self.downloadStatus = fileDownloadStatusDownloaded;
+            }else {
+                // 下载过一部分
+                self.downloadStatus = fileDownloadStatusPause;
+            }
+        }
+    }else {
+        self.downloadLength = 0;
+        self.downloadProgress = 0;
+        
+        self.downloadStatus = fileDownloadStatusUnDwonload;
     }
 }
 
@@ -75,20 +135,15 @@
  */
 - (void)getDuration
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSURL *url = [NSURL URLWithString:self.downloadUrl];
-        NSDictionary *options = @{AVURLAssetPreferPreciseDurationAndTimingKey:[NSNumber numberWithBool:NO]};
-        AVURLAsset * asset = [AVURLAsset URLAssetWithURL:url options:options];
-        int seconds = ceil(asset.duration.value/asset.duration.timescale);
-        NSString *result = [NSString stringWithFormat:@"%ds",seconds];
+    NSURL *url = [NSURL URLWithString:self.downloadUrl];
+    [HYAVUtil getVideoDurationWithUrl:url complete:^(double duration) {
+        NSString *result = [NSString stringWithFormat:@"%.fs",duration];
         self.totalDuration = result;
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.getDurationComplete) {
-                self.getDurationComplete(result);
-            }
-        });
-    });
+        
+        if (self.getDurationComplete) {
+            self.getDurationComplete(result);
+        }
+    }];
 }
 
 /**
@@ -96,13 +151,17 @@
  */
 - (void)getFileSize
 {
-    NSMutableURLRequest *mURLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.downloadUrl]];
-    [mURLRequest setHTTPMethod:@"HEAD"];
-    mURLRequest.timeoutInterval = 5.0;
-    NSOperationQueue *queue = [NSOperationQueue mainQueue];
-    [NSURLConnection sendAsynchronousRequest:mURLRequest queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        if (!connectionError) {
-            [self getFileSizeSuccess:response];
+    NSURL *url = [NSURL URLWithString:self.downloadUrl];
+    [HYAVUtil getVideoLengthWithUrl:url complete:^(BOOL success, long long videoLength) {
+        if (success) {
+            self.totalLength = videoLength;
+            
+            // 获取文件大小成功 格式化成字符串
+            NSString *result = [NSByteCountFormatter stringFromByteCount:videoLength countStyle:NSByteCountFormatterCountStyleFile];
+            self.totalSizeFormate = result;
+            if (self.getTotalSizeComplete) {
+                self.getTotalSizeComplete(result);
+            }
         }else {
             [self getFileSizeFail];
         }
@@ -112,35 +171,12 @@
 /**
  * 获取文件大小成功处理
  */
-- (void)getFileSizeSuccess:(NSURLResponse *)response
-{
-    NSDictionary *dict = [(NSHTTPURLResponse *)response allHeaderFields];
-    NSNumber *length = [dict objectForKey:@"Content-Length"];
-    
-    self.totalLength = length.longLongValue;
-    
-    // 获取文件大小成功 格式化成字符串
-    NSString *result = [NSByteCountFormatter stringFromByteCount:length.longLongValue countStyle:NSByteCountFormatterCountStyleFile];
-    
-    self.totalSizeFormate = result;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.getTotalSizeComplete) {
-            self.getTotalSizeComplete(result);
-        }
-    });
-}
-
-/**
- * 获取文件大小成功处理
- */
 - (void)getFileSizeFail
 {
     // 获取文件大小失败
-    self.totalSizeFormate = @"0MB";
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.getTotalSizeComplete) {
-            self.getTotalSizeComplete(@"0MB");
+            self.getTotalSizeComplete(self.totalSizeFormate);
         }
     });
 }

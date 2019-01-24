@@ -37,7 +37,10 @@
                     CONTROLLERNAME:@"HYMultiThreadMainController"},
                   @{CELLTITLE:@"网络请求篇",
                     CELLDESCRIPTION:@"网络请求技术详解",
-                    CONTROLLERNAME:@"HYNetworkRequestMainController"}
+                    CONTROLLERNAME:@"HYNetworkRequestMainController"},
+                  @{CELLTITLE:@"视频播放",
+                    CELLDESCRIPTION:@"本地视频和在线视频的播放",
+                    CONTROLLERNAME:@"HYVideoMainController"}
                   ];
 }
 

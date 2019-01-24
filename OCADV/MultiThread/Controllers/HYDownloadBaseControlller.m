@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.data = [HYMoviesResolver share].movies;
+//    self.data = [HYGeneralSingleTon share].movies;
 }
 
 

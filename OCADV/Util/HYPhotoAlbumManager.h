@@ -56,6 +56,12 @@
 - (void)getAllPhototsComplete:(void (^)(NSArray <PHAsset *>*result))complete;
 
 /**
+ * 根据照片对象获取图片名字
+ * phAssert 照片对象
+ */
+- (NSString *)imageNameWithPHAssert:(PHAsset *)phAssert;
+
+/**
  * 获取照片(缩略图/原图)
  * assert 照片对象
  * synchronous 是否是同步请求
