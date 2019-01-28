@@ -220,7 +220,8 @@
 - (void)loadTimeIntervals
 {
     // 最大的时间间隔
-    int maxTimeInterval = self.model.totalDuration/10;
+    NSInteger maxTimeInterval = self.model.totalDuration/10;
+    maxTimeInterval = maxTimeInterval <= 1 ? 2 : maxTimeInterval;
     
     NSMutableArray *arrM = [NSMutableArray array];
     for (int i = 1; i < maxTimeInterval; i++) {
@@ -229,6 +230,9 @@
     }
     self.timeIntevals = [arrM copy];
     self.selectedPickerRow = [self.timeIntevals indexOfObject:@(self.model.thumbnailTimeInterval)];
+    if (self.selectedPickerRow == NSNotFound) {
+        self.selectedPickerRow = 0;
+    }
     [self.timePickerView reloadAllComponents];
 }
 
@@ -249,6 +253,8 @@
         cell.model = self.model;
     }
     
+    NSLog(@"当前缩略图时间:%@",self.model.thumbnailTimes);
+    NSLog(@"当前缩略图:%@",self.model.thumbnails);
     NSNumber *time = self.model.thumbnailTimes[indexPath.row];
     UIImage *image = self.model.thumbnails[time];
     if (image) {

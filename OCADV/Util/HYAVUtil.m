@@ -339,7 +339,7 @@
     }
     
     // 把所有的ts地址和视频总的时长包装成数组返回
-    NSArray *result = @[[arrM copy],@(duration)];
+    NSArray *result = @[[arrM copy],@(ceil(duration))];
     return result;
 }
 

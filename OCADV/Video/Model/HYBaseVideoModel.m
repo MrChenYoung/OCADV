@@ -54,9 +54,6 @@
     // 默认最后一次播放位置
     self.lastPlaySeconds = 1.0;
     
-    // 默认1秒取一次缩略图
-    self.thumbnailTimeInterval = 1;
-    
     // 初始化缩略图容器
     self.thumbnails = [NSMutableDictionary dictionary];
 }
@@ -71,12 +68,34 @@
     
     // 加载视频时长
     if (self.totalDuration == 0) {
-        [self loadVideoDurationComplete:^(NSString * _Nonnull duration) {
+        [self loadVideoDurationComplete:nil];
+    }
+}
+
+/**
+ * 设置时长同时设置默认的缩略图时间间隔
+ */
+- (void)setTotalDuration:(double)totalDuration
+{
+    _totalDuration = totalDuration;
+    
+    if (self.thumbnailTimes == nil) {
+        if (totalDuration > 0) {
+            // 默认最少20张最多50张缩略图来计算取缩略图时间间隔
+            int defaultThumbnailCount = self.totalDuration/10;
+            if (self.totalDuration < 20) {
+                defaultThumbnailCount = self.totalDuration;
+            }else {
+                defaultThumbnailCount = self.totalDuration/10 > 50 ? 50 : self.totalDuration/10;
+            }
+            
+            self.thumbnailTimeInterval = self.totalDuration/defaultThumbnailCount;
+            
             // 加载缩略图时间点集合
             if (self.thumbnailTimes.count == 0) {
                 [self loadThumbnailTimes];
             }
-        }];
+        }
     }
 }
 
@@ -110,6 +129,7 @@
     }
 }
 
+#pragma mark - custom method
 /**
  * 计算缩略图对应的所有时间点
  */

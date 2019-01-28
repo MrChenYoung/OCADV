@@ -87,8 +87,8 @@
         videoDuration = CMTimeGetSeconds(self.player.currentItem.duration);
     }
     
-    self.totalDuration = videoDuration;
-    NSString *durationString = [NSDate timeFormat:videoDuration];
+    self.totalDuration = ceil(videoDuration);
+    NSString *durationString = [NSDate timeFormat:self.totalDuration];
     self.totalDurationFormat = durationString;
     if (complete) {
         complete(durationString);
@@ -118,7 +118,7 @@
     if (self.url == nil) return;
     
     if (!self.playerPrepared) {
-        [HYToast toastWithMessage:@"播放器还没有准备好"];
+        NSLog(@"播放器还没有准备好");
         if (complete) {
             complete(nil);
         }
@@ -211,7 +211,9 @@
                 }
                 
                 // 递归请求下一张图片
-                [self getThumbnailWithTimeIndex:++index complete:complete];
+                if (index < self.thumbnailTimes.count - 1) {
+                    [self getThumbnailWithTimeIndex:++index complete:complete];
+                }
             });
         });
     }];
@@ -229,11 +231,6 @@
             // 加载视频时长
             if (self.totalDuration == 0) {
                 [self loadVideoDurationComplete:^(NSString * _Nonnull duration) {
-                    // 加载默认的缩略图时间点集合
-                    if (self.thumbnailTimes.count == 0) {
-                        [self loadThumbnailTimes];
-                    }
-                    
                     // 加载视频时长完成回调
                     if (self.loadVideoDurationBlock) {
                         self.loadVideoDurationBlock(duration);

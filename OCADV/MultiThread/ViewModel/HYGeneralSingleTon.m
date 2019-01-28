@@ -181,12 +181,13 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"m3u8Files1" ofType:nil];
     NSString *m3u8Content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     NSArray *numbers = [m3u8Content componentsSeparatedByString:@"%"];
+    NSString *urlStr = numbers.lastObject;
 
     NSMutableArray *arrM = [NSMutableArray array];
-    for (int i = 0; i < 5; i++) {
-        NSString *urlString = [NSString stringWithFormat:@"http://101.96.10.75/letv.com-live-ko-com-kovin.com/%@/hls/index.m3u8",numbers[i]];
+    for (int i = 10; i < 11; i++) {
+//        NSString *urlString = [NSString stringWithFormat:@"http://www.tszye.cn:2100/%@/500kb/hls/index.m3u8",numbers[i]];
         HYStreamVideoModel *videoModel = [[HYStreamVideoModel alloc]init];
-        videoModel.urlString = urlString;
+        videoModel.urlString = [urlStr stringByReplacingOccurrencesOfString:@"*" withString:numbers[i]];
         videoModel.title = numbers[i];
         [arrM addObject:videoModel];
     }

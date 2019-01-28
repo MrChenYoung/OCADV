@@ -25,6 +25,28 @@
 		FF241F2221EB3B740062B856 /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF241F2121EB3B740062B856 /* UIColor+Category.m */; };
 		FF241F2821EC86690062B856 /* UIImage+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF241F2721EC86690062B856 /* UIImage+Category.m */; };
 		FF241F2B21EC8AB50062B856 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF241F2A21EC8AB50062B856 /* NSString+Category.m */; };
+		FF288AC721FF155D008E04C2 /* m3u8Files13 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB121FF155A008E04C2 /* m3u8Files13 */; };
+		FF288AC821FF155D008E04C2 /* m3u8Files4 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB221FF155B008E04C2 /* m3u8Files4 */; };
+		FF288AC921FF155D008E04C2 /* m3u8Files6 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB321FF155B008E04C2 /* m3u8Files6 */; };
+		FF288ACA21FF155D008E04C2 /* m3u8Files18 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB421FF155B008E04C2 /* m3u8Files18 */; };
+		FF288ACB21FF155D008E04C2 /* m3u8Files8 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB521FF155B008E04C2 /* m3u8Files8 */; };
+		FF288ACC21FF155D008E04C2 /* m3u8Files12 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB621FF155B008E04C2 /* m3u8Files12 */; };
+		FF288ACD21FF155D008E04C2 /* m3u8Files7 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB721FF155B008E04C2 /* m3u8Files7 */; };
+		FF288ACE21FF155D008E04C2 /* m3u8Files19 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB821FF155C008E04C2 /* m3u8Files19 */; };
+		FF288ACF21FF155D008E04C2 /* m3u8Files22 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AB921FF155C008E04C2 /* m3u8Files22 */; };
+		FF288AD021FF155D008E04C2 /* m3u8Files20 in Resources */ = {isa = PBXBuildFile; fileRef = FF288ABA21FF155C008E04C2 /* m3u8Files20 */; };
+		FF288AD121FF155D008E04C2 /* m3u8Files10 in Resources */ = {isa = PBXBuildFile; fileRef = FF288ABB21FF155C008E04C2 /* m3u8Files10 */; };
+		FF288AD221FF155D008E04C2 /* m3u8Files15 in Resources */ = {isa = PBXBuildFile; fileRef = FF288ABC21FF155C008E04C2 /* m3u8Files15 */; };
+		FF288AD321FF155D008E04C2 /* m3u8Files3 in Resources */ = {isa = PBXBuildFile; fileRef = FF288ABD21FF155C008E04C2 /* m3u8Files3 */; };
+		FF288AD421FF155D008E04C2 /* m3u8Files5 in Resources */ = {isa = PBXBuildFile; fileRef = FF288ABE21FF155C008E04C2 /* m3u8Files5 */; };
+		FF288AD521FF155D008E04C2 /* m3u8Files17 in Resources */ = {isa = PBXBuildFile; fileRef = FF288ABF21FF155C008E04C2 /* m3u8Files17 */; };
+		FF288AD621FF155D008E04C2 /* m3u8Files1 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC021FF155C008E04C2 /* m3u8Files1 */; };
+		FF288AD721FF155D008E04C2 /* m3u8Files14 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC121FF155D008E04C2 /* m3u8Files14 */; };
+		FF288AD821FF155D008E04C2 /* m3u8Files16 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC221FF155D008E04C2 /* m3u8Files16 */; };
+		FF288AD921FF155D008E04C2 /* m3u8Files11 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC321FF155D008E04C2 /* m3u8Files11 */; };
+		FF288ADA21FF155D008E04C2 /* m3u8Files9 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC421FF155D008E04C2 /* m3u8Files9 */; };
+		FF288ADB21FF155D008E04C2 /* m3u8Files2 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC521FF155D008E04C2 /* m3u8Files2 */; };
+		FF288ADC21FF155D008E04C2 /* m3u8Files21 in Resources */ = {isa = PBXBuildFile; fileRef = FF288AC621FF155D008E04C2 /* m3u8Files21 */; };
 		FF2A0BE321E6E7420033E6AA /* HYM3u8VedioDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A0BE221E6E7420033E6AA /* HYM3u8VedioDownloadController.m */; };
 		FF2A0BE621E6E91A0033E6AA /* HYM3u8DownloadBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A0BE521E6E91A0033E6AA /* HYM3u8DownloadBaseController.m */; };
 		FF2A0BE921E6EBDA0033E6AA /* HYM3u8DownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A0BE821E6EBDA0033E6AA /* HYM3u8DownloadCell.m */; };
@@ -69,7 +91,6 @@
 		FF624F5221F791A800A5A6D5 /* HYVideoBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5021F791A700A5A6D5 /* HYVideoBaseCell.m */; };
 		FF624F5321F791A800A5A6D5 /* HYVideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5121F791A700A5A6D5 /* HYVideoListCell.m */; };
 		FF624F5521F791F200A5A6D5 /* HYVideoThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5421F791F200A5A6D5 /* HYVideoThumbnailView.m */; };
-		FF624F5721F8622A00A5A6D5 /* m3u8Files1 in Resources */ = {isa = PBXBuildFile; fileRef = FF624F5621F8622A00A5A6D5 /* m3u8Files1 */; };
 		FF624F5A21F8680900A5A6D5 /* HYNormalVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5921F8680900A5A6D5 /* HYNormalVideoModel.m */; };
 		FF624F5D21F8682000A5A6D5 /* HYStreamVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5C21F8682000A5A6D5 /* HYStreamVideoModel.m */; };
 		FF6B3B6921BB674B00879A09 /* HYSocketServerCoreFApiController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6821BB674B00879A09 /* HYSocketServerCoreFApiController.m */; };
@@ -184,6 +205,28 @@
 		FF241F2721EC86690062B856 /* UIImage+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Category.m"; sourceTree = "<group>"; };
 		FF241F2921EC8AB50062B856 /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
 		FF241F2A21EC8AB50062B856 /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
+		FF288AB121FF155A008E04C2 /* m3u8Files13 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files13; sourceTree = "<group>"; };
+		FF288AB221FF155B008E04C2 /* m3u8Files4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files4; sourceTree = "<group>"; };
+		FF288AB321FF155B008E04C2 /* m3u8Files6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files6; sourceTree = "<group>"; };
+		FF288AB421FF155B008E04C2 /* m3u8Files18 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files18; sourceTree = "<group>"; };
+		FF288AB521FF155B008E04C2 /* m3u8Files8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files8; sourceTree = "<group>"; };
+		FF288AB621FF155B008E04C2 /* m3u8Files12 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files12; sourceTree = "<group>"; };
+		FF288AB721FF155B008E04C2 /* m3u8Files7 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files7; sourceTree = "<group>"; };
+		FF288AB821FF155C008E04C2 /* m3u8Files19 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files19; sourceTree = "<group>"; };
+		FF288AB921FF155C008E04C2 /* m3u8Files22 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files22; sourceTree = "<group>"; };
+		FF288ABA21FF155C008E04C2 /* m3u8Files20 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files20; sourceTree = "<group>"; };
+		FF288ABB21FF155C008E04C2 /* m3u8Files10 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files10; sourceTree = "<group>"; };
+		FF288ABC21FF155C008E04C2 /* m3u8Files15 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files15; sourceTree = "<group>"; };
+		FF288ABD21FF155C008E04C2 /* m3u8Files3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files3; sourceTree = "<group>"; };
+		FF288ABE21FF155C008E04C2 /* m3u8Files5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files5; sourceTree = "<group>"; };
+		FF288ABF21FF155C008E04C2 /* m3u8Files17 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files17; sourceTree = "<group>"; };
+		FF288AC021FF155C008E04C2 /* m3u8Files1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files1; sourceTree = "<group>"; };
+		FF288AC121FF155D008E04C2 /* m3u8Files14 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files14; sourceTree = "<group>"; };
+		FF288AC221FF155D008E04C2 /* m3u8Files16 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files16; sourceTree = "<group>"; };
+		FF288AC321FF155D008E04C2 /* m3u8Files11 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files11; sourceTree = "<group>"; };
+		FF288AC421FF155D008E04C2 /* m3u8Files9 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files9; sourceTree = "<group>"; };
+		FF288AC521FF155D008E04C2 /* m3u8Files2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files2; sourceTree = "<group>"; };
+		FF288AC621FF155D008E04C2 /* m3u8Files21 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files21; sourceTree = "<group>"; };
 		FF2A0BE121E6E7420033E6AA /* HYM3u8VedioDownloadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYM3u8VedioDownloadController.h; sourceTree = "<group>"; };
 		FF2A0BE221E6E7420033E6AA /* HYM3u8VedioDownloadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYM3u8VedioDownloadController.m; sourceTree = "<group>"; };
 		FF2A0BE421E6E91A0033E6AA /* HYM3u8DownloadBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYM3u8DownloadBaseController.h; sourceTree = "<group>"; };
@@ -364,7 +407,6 @@
 		FF624F5021F791A700A5A6D5 /* HYVideoBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYVideoBaseCell.m; sourceTree = "<group>"; };
 		FF624F5121F791A700A5A6D5 /* HYVideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYVideoListCell.m; sourceTree = "<group>"; };
 		FF624F5421F791F200A5A6D5 /* HYVideoThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYVideoThumbnailView.m; sourceTree = "<group>"; };
-		FF624F5621F8622A00A5A6D5 /* m3u8Files1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = m3u8Files1; sourceTree = "<group>"; };
 		FF624F5821F8680900A5A6D5 /* HYNormalVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNormalVideoModel.h; sourceTree = "<group>"; };
 		FF624F5921F8680900A5A6D5 /* HYNormalVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNormalVideoModel.m; sourceTree = "<group>"; };
 		FF624F5B21F8682000A5A6D5 /* HYStreamVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYStreamVideoModel.h; sourceTree = "<group>"; };
@@ -1318,8 +1360,29 @@
 		FFD4B6AA21CE238300614F80 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				FF288AC021FF155C008E04C2 /* m3u8Files1 */,
+				FF288AC521FF155D008E04C2 /* m3u8Files2 */,
+				FF288ABD21FF155C008E04C2 /* m3u8Files3 */,
+				FF288AB221FF155B008E04C2 /* m3u8Files4 */,
+				FF288ABE21FF155C008E04C2 /* m3u8Files5 */,
+				FF288AB321FF155B008E04C2 /* m3u8Files6 */,
+				FF288AB721FF155B008E04C2 /* m3u8Files7 */,
+				FF288AB521FF155B008E04C2 /* m3u8Files8 */,
+				FF288AC421FF155D008E04C2 /* m3u8Files9 */,
+				FF288ABB21FF155C008E04C2 /* m3u8Files10 */,
+				FF288AC321FF155D008E04C2 /* m3u8Files11 */,
+				FF288AB621FF155B008E04C2 /* m3u8Files12 */,
+				FF288AB121FF155A008E04C2 /* m3u8Files13 */,
+				FF288AC121FF155D008E04C2 /* m3u8Files14 */,
+				FF288ABC21FF155C008E04C2 /* m3u8Files15 */,
+				FF288AC221FF155D008E04C2 /* m3u8Files16 */,
+				FF288ABF21FF155C008E04C2 /* m3u8Files17 */,
+				FF288AB421FF155B008E04C2 /* m3u8Files18 */,
+				FF288AB821FF155C008E04C2 /* m3u8Files19 */,
+				FF288ABA21FF155C008E04C2 /* m3u8Files20 */,
+				FF288AC621FF155D008E04C2 /* m3u8Files21 */,
+				FF288AB921FF155C008E04C2 /* m3u8Files22 */,
 				FFD4B6AB21CE239900614F80 /* videoData.plist */,
-				FF624F5621F8622A00A5A6D5 /* m3u8Files1 */,
 			);
 			path = Resouces;
 			sourceTree = "<group>";
@@ -1443,17 +1506,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF12536F21B62C3C001F0CEE /* image1.jpg in Resources */,
+				FF288AD821FF155D008E04C2 /* m3u8Files16 in Resources */,
+				FF288AC821FF155D008E04C2 /* m3u8Files4 in Resources */,
+				FF288ADC21FF155D008E04C2 /* m3u8Files21 in Resources */,
+				FF288ACB21FF155D008E04C2 /* m3u8Files8 in Resources */,
+				FF288ACC21FF155D008E04C2 /* m3u8Files12 in Resources */,
 				FF624F4221F6FEE300A5A6D5 /* image1.jpg in Resources */,
+				FF288ACA21FF155D008E04C2 /* m3u8Files18 in Resources */,
+				FF288ADA21FF155D008E04C2 /* m3u8Files9 in Resources */,
+				FF288AD021FF155D008E04C2 /* m3u8Files20 in Resources */,
 				FF56DD6721AFE3E80080DFBF /* LaunchScreen.storyboard in Resources */,
-				FF624F5721F8622A00A5A6D5 /* m3u8Files1 in Resources */,
+				FF288AD721FF155D008E04C2 /* m3u8Files14 in Resources */,
+				FF288ACF21FF155D008E04C2 /* m3u8Files22 in Resources */,
+				FF288AC721FF155D008E04C2 /* m3u8Files13 in Resources */,
+				FF288AD121FF155D008E04C2 /* m3u8Files10 in Resources */,
 				FFD4B6AC21CE239900614F80 /* videoData.plist in Resources */,
 				FF1170A921C8EE140009880D /* WSServer.js in Resources */,
+				FF288AD921FF155D008E04C2 /* m3u8Files11 in Resources */,
+				FF288AD521FF155D008E04C2 /* m3u8Files17 in Resources */,
+				FF288AD321FF155D008E04C2 /* m3u8Files3 in Resources */,
 				FF624F4121F6FEE300A5A6D5 /* image2.jpg in Resources */,
 				FF624F4321F6FEE300A5A6D5 /* image3.jpg in Resources */,
 				FF56DD6421AFE3E80080DFBF /* Assets.xcassets in Resources */,
 				FF56DD6221AFE3E70080DFBF /* Main.storyboard in Resources */,
 				FF12536B21B52FFB001F0CEE /* image2.jpg in Resources */,
+				FF288ACD21FF155D008E04C2 /* m3u8Files7 in Resources */,
+				FF288AD621FF155D008E04C2 /* m3u8Files1 in Resources */,
+				FF288AC921FF155D008E04C2 /* m3u8Files6 in Resources */,
 				FF12536921B52FFB001F0CEE /* image3.jpg in Resources */,
+				FF288ADB21FF155D008E04C2 /* m3u8Files2 in Resources */,
+				FF288ACE21FF155D008E04C2 /* m3u8Files19 in Resources */,
+				FF288AD421FF155D008E04C2 /* m3u8Files5 in Resources */,
+				FF288AD221FF155D008E04C2 /* m3u8Files15 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

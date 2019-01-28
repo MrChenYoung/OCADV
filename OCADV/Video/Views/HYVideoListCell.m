@@ -161,10 +161,14 @@
         [model loadVideoNaturalSizeComplete:nil];
         model.loadVideoNaturalSizeBlock = ^(CGSize videoSize) {
             [self reloadTableView];
-            self.thumbnailImageView.viewSize = weakModel.naturalSize;
+            if (model.naturalSize.width > 0 && model.naturalSize.height > 0) {
+                self.thumbnailImageView.viewSize = weakModel.naturalSize;
+            }
         };
     }else {
-        self.thumbnailImageView.viewSize = model.naturalSize;
+        if (model.naturalSize.width > 0 && model.naturalSize.height > 0) {
+            self.thumbnailImageView.viewSize = model.naturalSize;
+        }
     }
     
     // 设置缩略图
@@ -197,7 +201,6 @@
         };
     }else {
         self.durationLabel.text = model.totalDurationFormat;
-        self.thumbnailCountLabel.text = [NSString stringWithFormat:@"%.f",model.totalDuration];
     }
     
     // 设置视频占用存储空间大小
@@ -208,6 +211,16 @@
         };
     }else {
         self.videoLengthLabel.text = model.videoLengthFormat;
+    }
+    
+    // 所有缩略图张数
+    if (model.thumbnailTimes == nil) {
+        model.loadThumbnailTimesBlock = ^{
+            self.thumbnailCountLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)weakModel.thumbnailTimes.count];
+        };
+        [model loadThumbnailTimes];
+    }else {
+        self.thumbnailCountLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)weakModel.thumbnailTimes.count];
     }
     
     // 刷新播放状态
