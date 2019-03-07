@@ -13,6 +13,7 @@ pod 'CocoaAsyncSocket', '~> 7.6.3'
 pod 'SocketRocket'
 pod 'SVProgressHUD' #加载loading第三方
 pod 'AFNetworking' #网络请求第三方框架
+pod 'YYModel' #模型转换工具
 #pod 'FFmpeger-iOS'
 
 #post_install do |installer|

@@ -17,6 +17,10 @@
 // 查询手机号码url
 #define checkPhoneNumberUrl @"https://tcc.taobao.com/cc/json/mobile_tel_segment.htm"
 
+// 查询天气接口支持的城市列表url
+#define WeatherSupportCitiesUrl @"http://v.juhe.cn/weather/citys"
+
+
 // 获取微信公众平台accessToken url
 #define GetAccessTokenUrl @"https://api.weixin.qq.com/cgi-bin/token"
 

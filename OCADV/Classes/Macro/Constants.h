@@ -29,6 +29,9 @@
 #define ColorLightGray [UIColor colorWithRed:195.0/255.0 green:195.0/255.0 blue:195.0/255.0 alpha:1]
 #define ColorGrayBg [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1]
 #define ColorDefaultText ColorWithRGB(51.0,51.0,51.0)
+#define ColorGrayText ColorWithRGB(100.0,100.0,100.0)
+#define ColorLightGrayText ColorWithRGB(150.0,150.0,150.0)
+
 // 字体
 #define FontNomal [UIFont systemFontOfSize:14]
 
@@ -40,13 +43,6 @@
 // 从相册加载图片失败
 #define KLOADIMAGECOMPLETE @"loadImageComplete"
 
-// 微信公众号信息
-// 微信公众号账号信息
-#define AppId @"wx1edac1543aa52bc9"
-#define AppSecret @"57c757a41f1f0ffc8c77af8eafb57fc3"
 
-// 微信小程序账号信息
-//#define AppId @"wxdda428dee0e87a3b"
-//#define AppSecret @"f157a773b25bebc8f11b637b3d8cbf1f"
 
 #endif /* Constants_h */

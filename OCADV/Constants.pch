@@ -28,7 +28,6 @@
 #import "HYSocketClientModel.h"
 #import "IPUtil.h"
 #import "HYAVUtil.h"
-#import "APIMacro.h"
 #import <SVProgressHUD.h>
 #import "NSData+Category.h"
 #import "NSDate+Category.h"
@@ -38,6 +37,15 @@
 #import "HYUploadImageModel.h"
 #import "HYServerImageModel.h"
 #import "HYURLConnectionUtil.h"
+
+#import "APIMacro.h"
+#import "VendorMarco.h"
+
+#import <YYModel.h>
+#import "TBCityIconFont.h"
+
+#import "UIButton+Category.h"
+#import "UIImage+TBCityIconFont.h"
 
 #endif
 

@@ -142,10 +142,10 @@
         }
     }
     
-    if (urlConnectionCtr) {
-        urlConnectionCtr.uploadImageModel.image = self.image;
-        urlConnectionCtr.uploadImageModel = urlConnectionCtr.uploadImageModel;
-    }
+//    if (urlConnectionCtr) {
+//        urlConnectionCtr.uploadImageModel.image = self.image;
+//        urlConnectionCtr.uploadImageModel = urlConnectionCtr.uploadImageModel;
+//    }
 }
 
 

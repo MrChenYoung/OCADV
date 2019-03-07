@@ -19,6 +19,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // iconfont初始化
+    [TBCityIconFont setFontName:@"iconfont"];
 
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     ViewController *mainVc = [[ViewController alloc]init];
