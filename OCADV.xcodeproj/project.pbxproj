@@ -92,6 +92,8 @@
 		FF5D76A022315C1C00FF9EEC /* FFmpegConverOC.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5D769222315C1C00FF9EEC /* FFmpegConverOC.m */; };
 		FF5D76A422315F5400FF9EEC /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF5D76A322315F5400FF9EEC /* iconfont.ttf */; };
 		FF5D76A72231666D00FF9EEC /* HYWeatherCityListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5D76A62231666D00FF9EEC /* HYWeatherCityListView.m */; };
+		FF5D76AE22323C5D00FF9EEC /* HYCommonDataSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5D76AD22323C5D00FF9EEC /* HYCommonDataSingleton.m */; };
+		FF5D76B12232400800FF9EEC /* UILabel+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5D76B02232400800FF9EEC /* UILabel+Category.m */; };
 		FF624F3A21F6E81800A5A6D5 /* HYBaseVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F3921F6E81800A5A6D5 /* HYBaseVideoModel.m */; };
 		FF624F3D21F6F35800A5A6D5 /* HYVideoCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F3C21F6F35800A5A6D5 /* HYVideoCategoryView.m */; };
 		FF624F4121F6FEE300A5A6D5 /* image5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF624F3E21F6FEE200A5A6D5 /* image5.jpg */; };
@@ -426,6 +428,10 @@
 		FF5D76A322315F5400FF9EEC /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		FF5D76A52231666D00FF9EEC /* HYWeatherCityListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYWeatherCityListView.h; sourceTree = "<group>"; };
 		FF5D76A62231666D00FF9EEC /* HYWeatherCityListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYWeatherCityListView.m; sourceTree = "<group>"; };
+		FF5D76AC22323C5D00FF9EEC /* HYCommonDataSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYCommonDataSingleton.h; sourceTree = "<group>"; };
+		FF5D76AD22323C5D00FF9EEC /* HYCommonDataSingleton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYCommonDataSingleton.m; sourceTree = "<group>"; };
+		FF5D76AF2232400800FF9EEC /* UILabel+Category.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Category.h"; sourceTree = "<group>"; };
+		FF5D76B02232400800FF9EEC /* UILabel+Category.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Category.m"; sourceTree = "<group>"; };
 		FF624F3821F6E81800A5A6D5 /* HYBaseVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYBaseVideoModel.h; sourceTree = "<group>"; };
 		FF624F3921F6E81800A5A6D5 /* HYBaseVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYBaseVideoModel.m; sourceTree = "<group>"; };
 		FF624F3B21F6F35800A5A6D5 /* HYVideoCategoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYVideoCategoryView.h; sourceTree = "<group>"; };
@@ -873,6 +879,7 @@
 		FF5D75F52231587500FF9EEC /* General */ = {
 			isa = PBXGroup;
 			children = (
+				FF5D76A822323B4900FF9EEC /* Singletons */,
 				FF7559D521AFE79D00F6F08A /* Main */,
 				FFD4B69D21CCB91B00614F80 /* Base */,
 				FF7559D921AFEC2700F6F08A /* Category */,
@@ -1228,6 +1235,15 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		FF5D76A822323B4900FF9EEC /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				FF5D76AC22323C5D00FF9EEC /* HYCommonDataSingleton.h */,
+				FF5D76AD22323C5D00FF9EEC /* HYCommonDataSingleton.m */,
+			);
+			path = "S\U0005ingletons";
+			sourceTree = "<group>";
+		};
 		FF74733621DE56B20029962C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1282,6 +1298,8 @@
 				FF241F2721EC86690062B856 /* UIImage+Category.m */,
 				FF5D74C1222C1A0A00FF9EEC /* UIButton+Category.h */,
 				FF5D74C2222C1A0A00FF9EEC /* UIButton+Category.m */,
+				FF5D76AF2232400800FF9EEC /* UILabel+Category.h */,
+				FF5D76B02232400800FF9EEC /* UILabel+Category.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1769,6 +1787,7 @@
 				FF624F3D21F6F35800A5A6D5 /* HYVideoCategoryView.m in Sources */,
 				FF7845CD21F0B259004BD34F /* HYMoviePlayerControllerLocalCtr.m in Sources */,
 				FF755A2021B4CA4600F6F08A /* HYRunloopController.m in Sources */,
+				FF5D76AE22323C5D00FF9EEC /* HYCommonDataSingleton.m in Sources */,
 				FF7845BB21ED99E2004BD34F /* HYCheckImageBaseCtr.m in Sources */,
 				FF7845EF21F49570004BD34F /* HYVideoThumbnailListController.m in Sources */,
 				FF624F5521F791F200A5A6D5 /* HYVideoThumbnailView.m in Sources */,
@@ -1807,6 +1826,7 @@
 				FF1E2CC821E4F0DB004C5267 /* HYURLConnectionUpload.m in Sources */,
 				FF5D769822315C1C00FF9EEC /* FFmpegManager.m in Sources */,
 				FF34310C21CE19BF000E2F67 /* HYDownloadView.m in Sources */,
+				FF5D76B12232400800FF9EEC /* UILabel+Category.m in Sources */,
 				FF7845EC21F3768C004BD34F /* HYPlayVideoMoviePlayerController.m in Sources */,
 				FFD25E0021BE7242004327BC /* HYSocketFoundationServer.m in Sources */,
 				FF755A1C21B121E200F6F08A /* UIView+Category.m in Sources */,

@@ -18,6 +18,17 @@ NS_ASSUME_NONNULL_BEGIN
 // 城市数据
 @property (nonatomic, copy) NSArray<NSString *> *cityDatas;
 
+// 显示状态
+@property (nonatomic, assign, readonly, getter = isShow) BOOL show;
+
+// 选择的城市改变
+@property (nonatomic, copy) void (^selectCityChangedBlock)(NSString *provence,NSString *city,NSString *distribute,NSInteger index);
+
+/**
+ * 显示/隐藏列表
+ */
+- (void)updateShowStateComplete:(void(^)(BOOL isShow))complete;
+
 @end
 
 NS_ASSUME_NONNULL_END

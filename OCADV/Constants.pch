@@ -46,6 +46,9 @@
 
 #import "UIButton+Category.h"
 #import "UIImage+TBCityIconFont.h"
+#import "UILabel+Category.h"
+
+#import "HYCommonDataSingleton.h"
 
 #endif
 

@@ -13,6 +13,9 @@
 // 选择城市按钮
 @property (nonatomic, strong) UIButton *selectCityBtn;
 
+// 箭头图标
+@property (nonatomic, strong) UIImageView *arrowImageView;
+
 // 结果显示框
 @property (nonatomic, weak) UITextView *resultTextView;
 
@@ -45,6 +48,7 @@
     selectCityBtn.layer.cornerRadius = 3;
     selectCityBtn.layer.borderWidth = 0.5;
     selectCityBtn.layer.borderColor = ColorLightGray.CGColor;
+    [selectCityBtn addTarget:self action:@selector(selectCityBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:selectCityBtn];
     self.selectCityBtn = selectCityBtn;
     
@@ -57,6 +61,7 @@
     UIImage *downArrImage = [UIImage iconWithInfo:TBCityIconInfoMake(@"\U0000e601", 20, ColorWithRGB(0.55, 0.55, 0.55))];
     arrowImageView.image = downArrImage;
     [selectCityBtn addSubview:arrowImageView];
+    self.arrowImageView = arrowImageView;
     
     // 按钮
     CGFloat lastMaxY = 0;
@@ -86,6 +91,17 @@
     // 城市列表
     self.cityListView = [[HYWeatherCityListView alloc]initWithFrame:CGRectMake(CGRectGetMinX(selectCityBtn.frame), CGRectGetMaxY(selectCityBtn.frame), CGRectGetWidth(selectCityBtn.frame), 0)];
     self.cityListView.maxHeight = self.viewHeight - CGRectGetMinY(self.cityListView.frame);
+    __weak typeof(self) weakSelf = self;
+    self.cityListView.selectCityChangedBlock = ^(NSString * _Nonnull provence, NSString * _Nonnull city, NSString * _Nonnull distribute, NSInteger index) {
+        weakSelf.selectProvence = provence;
+        weakSelf.selectCity = city;
+        weakSelf.selectDistrict = distribute;
+        if (weakSelf.selectCityChangedBlock) {
+            weakSelf.selectCityChangedBlock(index);
+        }
+        
+        [weakSelf updateArrowImageViewState];
+    };
     [self addSubview:self.cityListView];
 }
 
@@ -142,4 +158,25 @@
     [self.selectCityBtn setAttributedTitleWithStrings:[arrayM copy] colors:@[ColorDefaultText,ColorGrayText,ColorLightGrayText] fontSizes:@[@14,@12,@10]];
 }
 
+/**
+ * 选择城市按钮点击
+ */
+- (void)selectCityBtnClick
+{
+    [self.cityListView updateShowStateComplete:^(BOOL isShow) {
+        [self updateArrowImageViewState];
+    }];
+}
+
+// 刷新箭头图标
+- (void)updateArrowImageViewState
+{
+    UIImage *image = nil;
+    if (self.cityListView.isShow) {
+        image = [UIImage iconWithInfo:TBCityIconInfoMake(@"\U0000e600", 20, ColorWithRGB(0.55, 0.55, 0.55))];
+    }else {
+        image = [UIImage iconWithInfo:TBCityIconInfoMake(@"\U0000e601", 20, ColorWithRGB(0.55, 0.55, 0.55))];
+    }
+    self.arrowImageView.image = image;
+}
 @end

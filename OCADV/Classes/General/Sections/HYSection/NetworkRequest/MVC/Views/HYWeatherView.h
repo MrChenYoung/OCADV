@@ -23,8 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
 // 选中的区
 @property (nonatomic, copy) NSString *selectDistrict;
 
+// 选择的城市改变
+@property (nonatomic, copy) void (^selectCityChangedBlock)(NSInteger index);
+
 // 城市列表
 @property (nonatomic, strong) HYWeatherCityListView *cityListView;
+
 
 @end
 

@@ -36,22 +36,34 @@
     [self.view addSubview:self.mainView];
     
     self.citiesModel = [[HYWeatherCitiesModel alloc]init];
-    [self.citiesModel loadCitiesAsynSuccess:^(NSArray * _Nonnull cities) {
-        HYWeatherCityModel *model = cities.firstObject;
-        self.mainView.weatherView.selectProvence = model.province;
-        self.mainView.weatherView.selectCity = model.city;
-        self.mainView.weatherView.selectDistrict = model.district;
-        
-        NSMutableArray *cityNames = [NSMutableArray array];
-        for (HYWeatherCityModel *city in cities) {
-            [cityNames addObject:city.cityString];
-        }
-        self.mainView.weatherView.cityListView.cityDatas = [cityNames copy];
-    } faile:^(NSString * _Nonnull errMessage) {
-        [HYToast toastWithMessage:errMessage];
-    }];
+    
+    __weak typeof(self) weakSelf = self;
+    if (self.citiesModel.cities.count <= 0) {
+        [self.citiesModel loadCitiesAsynSuccess:^(NSArray * _Nonnull cities) {
+            [weakSelf reloadWeatherView:cities];
+        } faile:^(NSString * _Nonnull errMessage) {
+            [HYToast toastWithMessage:errMessage];
+        }];
+    }else {
+        [self reloadWeatherView:self.citiesModel.cities];
+    }
+    
     
 //    [self loadRequests];
+}
+
+- (void)reloadWeatherView:(NSArray *)cities
+{
+    HYWeatherCityModel *model = cities.firstObject;
+    self.mainView.weatherView.selectProvence = model.province;
+    self.mainView.weatherView.selectCity = model.city;
+    self.mainView.weatherView.selectDistrict = model.district;
+    
+    NSMutableArray *cityNames = [NSMutableArray array];
+    for (HYWeatherCityModel *city in cities) {
+        [cityNames addObject:city.cityString];
+    }
+    self.mainView.weatherView.cityListView.cityDatas = [cityNames copy];
 }
 
 //- (void)loadRequests
