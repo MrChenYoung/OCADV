@@ -184,7 +184,7 @@
     NSString *urlStr = numbers.lastObject;
 
     NSMutableArray *arrM = [NSMutableArray array];
-    for (int i = 10; i < 11; i++) {
+    for (int i = 11; i < 11; i++) {
 //        NSString *urlString = [NSString stringWithFormat:@"http://www.tszye.cn:2100/%@/500kb/hls/index.m3u8",numbers[i]];
         HYStreamVideoModel *videoModel = [[HYStreamVideoModel alloc]init];
         videoModel.urlString = [urlStr stringByReplacingOccurrencesOfString:@"*" withString:numbers[i]];

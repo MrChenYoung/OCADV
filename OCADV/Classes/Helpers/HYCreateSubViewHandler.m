@@ -13,6 +13,9 @@
 // 创建按钮
 + (void)createBtn:(NSArray *)titles fontSize:(CGFloat)fontSize target:(id)target sel: (SEL)selector superView:(UIView *)superView baseTag: (NSInteger)baseTag
 {
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:superView.bounds];
+    [superView addSubview:scrollView];
+    
     CGFloat padding = 20;
     CGFloat topPadding = 20;
     CGFloat btnW = [UIScreen mainScreen].bounds.size.width - padding * 2;
@@ -21,9 +24,10 @@
     for (NSString *title in titles) {
         NSInteger index = [titles indexOfObject:title];
         CGFloat btnX = padding;
-        CGFloat btnPadding = ([UIScreen mainScreen].bounds.size.height - topPadding * 2 - btnH * titles.count - 64)/(titles.count + 1);
-        CGFloat btnY = topPadding +  btnPadding * (index + 1) + btnH * index + 64;
+        CGFloat btnPadding = ([UIScreen mainScreen].bounds.size.height - topPadding - btnH * titles.count)/(titles.count + 1);
+        btnPadding = btnPadding < 20 ? 20 : btnPadding;
         
+        CGFloat btnY = topPadding +  (btnPadding + btnH) * index;
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -32,7 +36,9 @@
         [btn setTitle:title forState:UIControlStateNormal];
         btn.tag = baseTag + index;
         [btn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-        [superView addSubview:btn];
+        [scrollView addSubview:btn];
+        
+        scrollView.contentSize = CGSizeMake(superView.bounds.size.width, CGRectGetMaxY(btn.frame) + topPadding);
     }
 }
 @end

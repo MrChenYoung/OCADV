@@ -23,6 +23,12 @@
                   @{CELLTITLE:@"NSThread",
                     CELLDESCRIPTION:@"苹果原生封装框架",
                     CONTROLLERNAME:@"HYNSThreadController"},
+                  @{CELLTITLE:@"GCD",
+                    CELLDESCRIPTION:@"苹果提供的牛逼的并发开发框架",
+                    CONTROLLERNAME:@"HYGCDController"},
+                  @{CELLTITLE:@"NSOperation",
+                    CELLDESCRIPTION:@"苹果基于GCD封装的面向对象并发开发技术",
+                    CONTROLLERNAME:@"HYNSOperationController"},
                   ];
 }
 

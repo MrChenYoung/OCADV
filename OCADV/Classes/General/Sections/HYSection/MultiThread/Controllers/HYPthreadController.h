@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HYPthreadController : HYTableViewBaseController
+@interface HYPthreadController : HYBaseViewController
 
 @end
 
