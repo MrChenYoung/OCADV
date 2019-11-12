@@ -26,7 +26,10 @@
     self.data = @[@{CELLTITLE:@"ReactiveCocoa(RAC)",
                     CELLDESCRIPTION:@"函数响应式编程应用",
                     CONTROLLERNAME:@"HYReactiveCocoaController"},
-                  @{CELLTITLE:@"Runloop使用",
+                  @{CELLTITLE:@"Runtime原理探索",
+                    CELLDESCRIPTION:@"运行时原理用法探索",
+                    CONTROLLERNAME:@"HYRuntimeController"},
+                  @{CELLTITLE:@"Runloop原理探索",
                     CELLDESCRIPTION:@"运行循环剖析",
                     CONTROLLERNAME:@"HYRunloopController"},
                   @{CELLTITLE:@"Socket编程",
@@ -40,10 +43,7 @@
                     CONTROLLERNAME:@"HYNetworkRequestMainController"},
                   @{CELLTITLE:@"视频播放",
                     CELLDESCRIPTION:@"本地视频和在线视频的播放",
-                    CONTROLLERNAME:@"HYVideoMainController"},
-                  @{CELLTITLE:@"测试用例",
-                    CELLDESCRIPTION:@"测试",
-                    CONTROLLERNAME:@"HYTestController"}
+                    CONTROLLERNAME:@"HYVideoMainController"}
                   ];
 }
 
