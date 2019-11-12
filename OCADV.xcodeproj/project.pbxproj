@@ -108,6 +108,7 @@
 		FF624F5521F791F200A5A6D5 /* HYVideoThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5421F791F200A5A6D5 /* HYVideoThumbnailView.m */; };
 		FF624F5A21F8680900A5A6D5 /* HYNormalVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5921F8680900A5A6D5 /* HYNormalVideoModel.m */; };
 		FF624F5D21F8682000A5A6D5 /* HYStreamVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF624F5C21F8682000A5A6D5 /* HYStreamVideoModel.m */; };
+		FF6A4A4C23796EDF00230F0F /* HYRuntimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6A4A4B23796EDF00230F0F /* HYRuntimeController.m */; };
 		FF6B3B6921BB674B00879A09 /* HYSocketServerCoreFApiController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6821BB674B00879A09 /* HYSocketServerCoreFApiController.m */; };
 		FF6B3B6C21BB676A00879A09 /* HYSocketServerCocoaAsyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6B21BB676A00879A09 /* HYSocketServerCocoaAsyncController.m */; };
 		FF6B3B6F21BD678300879A09 /* HYSocketCoreFoundationServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B3B6E21BD678300879A09 /* HYSocketCoreFoundationServer.m */; };
@@ -145,7 +146,6 @@
 		FF7845FB21F4CBE0004BD34F /* HYVideoThumbnailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7845FA21F4CBE0004BD34F /* HYVideoThumbnailListCell.m */; };
 		FF7F193421BF97C300DB5FE2 /* HYSocketClientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F193321BF97C300DB5FE2 /* HYSocketClientModel.m */; };
 		FF7F193721C10D1D00DB5FE2 /* IPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F193621C10D1D00DB5FE2 /* IPUtil.m */; };
-		FF852653220B1D500041AC9C /* HYTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF852652220B1D500041AC9C /* HYTestController.m */; };
 		FF9150A421D372B2000FBC8D /* HYAFNRequestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9150A321D372B2000FBC8D /* HYAFNRequestUtil.m */; };
 		FF9150A721D383EE000FBC8D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9150A521D383A1000FBC8D /* libiconv.tbd */; };
 		FF9150AE21D389D8000FBC8D /* NSData+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9150AD21D389D8000FBC8D /* NSData+Category.m */; };
@@ -457,6 +457,8 @@
 		FF624F5921F8680900A5A6D5 /* HYNormalVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNormalVideoModel.m; sourceTree = "<group>"; };
 		FF624F5B21F8682000A5A6D5 /* HYStreamVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYStreamVideoModel.h; sourceTree = "<group>"; };
 		FF624F5C21F8682000A5A6D5 /* HYStreamVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYStreamVideoModel.m; sourceTree = "<group>"; };
+		FF6A4A4A23796EDF00230F0F /* HYRuntimeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYRuntimeController.h; sourceTree = "<group>"; };
+		FF6A4A4B23796EDF00230F0F /* HYRuntimeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYRuntimeController.m; sourceTree = "<group>"; };
 		FF6B3B6721BB674B00879A09 /* HYSocketServerCoreFApiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSocketServerCoreFApiController.h; sourceTree = "<group>"; };
 		FF6B3B6821BB674B00879A09 /* HYSocketServerCoreFApiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSocketServerCoreFApiController.m; sourceTree = "<group>"; };
 		FF6B3B6A21BB676A00879A09 /* HYSocketServerCocoaAsyncController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSocketServerCocoaAsyncController.h; sourceTree = "<group>"; };
@@ -535,8 +537,6 @@
 		FF7F193321BF97C300DB5FE2 /* HYSocketClientModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSocketClientModel.m; sourceTree = "<group>"; };
 		FF7F193521C10D1D00DB5FE2 /* IPUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPUtil.h; sourceTree = "<group>"; };
 		FF7F193621C10D1D00DB5FE2 /* IPUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPUtil.m; sourceTree = "<group>"; };
-		FF852651220B1D500041AC9C /* HYTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTestController.h; sourceTree = "<group>"; };
-		FF852652220B1D500041AC9C /* HYTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTestController.m; sourceTree = "<group>"; };
 		FF9150A221D372B2000FBC8D /* HYAFNRequestUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAFNRequestUtil.h; sourceTree = "<group>"; };
 		FF9150A321D372B2000FBC8D /* HYAFNRequestUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAFNRequestUtil.m; sourceTree = "<group>"; };
 		FF9150A521D383A1000FBC8D /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -911,6 +911,7 @@
 			isa = PBXGroup;
 			children = (
 				FF7559D421AFE77E00F6F08A /* ReactiveCocoa(RAC) */,
+				FF6A4A4823796E9300230F0F /* Runtime */,
 				FF755A1D21B4CA2600F6F08A /* Runloop */,
 				FFAC414721B7ADED0035BEFB /* Socket */,
 				FF1170B321CA503E0009880D /* MultiThread */,
@@ -1254,6 +1255,23 @@
 			path = "S\U0005ingletons";
 			sourceTree = "<group>";
 		};
+		FF6A4A4823796E9300230F0F /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A4A4923796EB300230F0F /* Controllers */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
+		FF6A4A4923796EB300230F0F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A4A4A23796EDF00230F0F /* HYRuntimeController.h */,
+				FF6A4A4B23796EDF00230F0F /* HYRuntimeController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FF74733621DE56B20029962C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1281,8 +1299,6 @@
 			children = (
 				FF56DD5D21AFE3E70080DFBF /* ViewController.h */,
 				FF56DD5E21AFE3E70080DFBF /* ViewController.m */,
-				FF852651220B1D500041AC9C /* HYTestController.h */,
-				FF852652220B1D500041AC9C /* HYTestController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1868,6 +1884,7 @@
 				FF9150A421D372B2000FBC8D /* HYAFNRequestUtil.m in Sources */,
 				FF7559E921AFF05300F6F08A /* HYRACView.m in Sources */,
 				FFAC414A21B7AE0E0035BEFB /* HYSocketController.m in Sources */,
+				FF6A4A4C23796EDF00230F0F /* HYRuntimeController.m in Sources */,
 				FFD4B6A721CCBFF800614F80 /* HYDownloadSingleFileCell.m in Sources */,
 				FF7559EE21B0D70D00F6F08A /* HYAlertUtil.m in Sources */,
 				FFAA4BA921B9169900D96004 /* HYSocketCocoaAsyncClient.m in Sources */,
@@ -1900,7 +1917,6 @@
 				FFAC415221B901F10035BEFB /* HYSocketClientBaseController.m in Sources */,
 				FF74733C21DE5A460029962C /* HYPhotoAlbumManager.m in Sources */,
 				FFD4B6CB21D0E5A500614F80 /* HYNetRequestBaseController.m in Sources */,
-				FF852653220B1D500041AC9C /* HYTestController.m in Sources */,
 				FF7845D021F0B37E004BD34F /* HYVideiListViewController.m in Sources */,
 				FFD4B6B621D070F100614F80 /* HYURLSessionUtil.m in Sources */,
 				FFAA4BA621B90E0000D96004 /* HYSocketCoreFoundationClient.m in Sources */,

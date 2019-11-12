@@ -55,10 +55,17 @@
 }
 
 #pragma mark - UITableViewDataSource
+// section number
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.data.count;
+}
+
 // row number
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.data.count;
+    NSArray *rowData = self.data[section][SECTIONDATA];
+    return rowData.count;
 }
 
 // row height

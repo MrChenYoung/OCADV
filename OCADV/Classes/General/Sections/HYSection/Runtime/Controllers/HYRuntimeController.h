@@ -1,8 +1,8 @@
 //
-//  HYTestController.h
+//  HYRuntimeController.h
 //  OCADV
 //
-//  Created by MrChen on 2019/2/6.
+//  Created by MrChen on 2019/11/11.
 //  Copyright © 2019 MrChen. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HYTestController : UIViewController
+@interface HYRuntimeController : HYTableViewBaseController
 
 @end
 

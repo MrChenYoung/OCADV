@@ -36,6 +36,8 @@
 #define FontNomal [UIFont systemFontOfSize:14]
 
 // 常用宏
+#define SECTIONTITLE @"sectionTitle"
+#define SECTIONDATA @"sectionData"
 #define CELLTITLE @"title"
 #define CELLDESCRIPTION @"description"
 #define CONTROLLERNAME @"controllername"
